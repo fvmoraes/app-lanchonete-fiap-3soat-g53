@@ -15,4 +15,6 @@ public interface PedidoRepositoryPort {
 
 	List<Pedido> buscaPedidosStatus(StatusPedido statusPedido);
 
+	void atualizaPedido(Pedido pedido);
+
 }

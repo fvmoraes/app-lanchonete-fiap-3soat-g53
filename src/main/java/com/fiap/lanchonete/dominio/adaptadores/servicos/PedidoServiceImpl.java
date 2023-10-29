@@ -92,8 +92,7 @@ public class PedidoServiceImpl implements PedidoServicePort {
 	public void atualizaPedidoStatus(Integer id, StatusPedido status) throws PedidoNaoEncontradoException {
 		Pedido pedidoAtualizado = repository.buscaPedidoId(id);
 		pedidoAtualizado.setStatusPedido(status);		
-		repository.salvarPedido(pedidoAtualizado);		
+		repository.atualizaPedido(pedidoAtualizado);		
 	}
-
 	
 }

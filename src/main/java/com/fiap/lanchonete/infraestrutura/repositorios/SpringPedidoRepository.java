@@ -10,5 +10,4 @@ import com.fiap.lanchonete.infraestrutura.entidades.PedidoEntity;
 public interface SpringPedidoRepository  extends JpaRepository<PedidoEntity, Integer>{
 	
 	List<PedidoEntity> findAllByStatusPedidoOrderById(StatusPedido status);
-
 }

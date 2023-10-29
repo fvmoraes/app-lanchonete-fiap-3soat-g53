@@ -34,7 +34,10 @@ public class PedidoRepository implements PedidoRepositoryPort{
 		repository.save(new PedidoEntity(pedido.getNomeLanche(), pedido.getNomeAcompanhamento(), pedido.getNomeBebida(), pedido.getNomeSobremesa(), pedido.getStatusPedido()));		
 	}
 
-
+	@Override
+	public void atualizaPedido(Pedido pedido) {
+		repository.save(new PedidoEntity(pedido.getIdPedido(), pedido.getNomeLanche(), pedido.getNomeAcompanhamento(), pedido.getNomeBebida(), pedido.getNomeSobremesa(), pedido.getStatusPedido()));		
+	}
 	@Override
 	public Pedido buscaPedidoId(Integer id) {
 		var pedido = repository.findById(id);

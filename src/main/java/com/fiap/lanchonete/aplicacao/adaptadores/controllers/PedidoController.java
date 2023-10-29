@@ -70,11 +70,10 @@ public class PedidoController {
 	public ResponseEntity<String> atualizaPedidoStatus(@PathVariable Integer id, @RequestBody StatusPedido status){
 		try {
 			service.atualizaPedidoStatus(id, status);
-			return new ResponseEntity<>("Pedido atualizado para Em preparacao com sucesso", HttpStatus.ACCEPTED);
+			return new ResponseEntity<>(String.format("Pedido atualizado para" + status.toString()+ "com sucesso", status), HttpStatus.ACCEPTED);
 		} catch (PedidoNaoEncontradoException e) {
 			return new ResponseEntity<>("Pedido não encontrado",HttpStatus.BAD_REQUEST);
 		}
 	}
-	
 	
 }
