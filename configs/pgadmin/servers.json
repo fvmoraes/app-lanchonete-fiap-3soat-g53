@@ -1,0 +1,14 @@
+{
+    "Servers": {
+      "1": {
+        "Name": "applanchonete_pgadmin",
+        "Group": "Servers",
+        "Host": "172.34.0.2",
+        "Port": 5432,
+        "MaintenanceDB": "fiap",
+        "Username": "postgres",
+        "PassFile": "/pgpass",
+        "SSLMode": "prefer"
+      }
+    }
+  }
