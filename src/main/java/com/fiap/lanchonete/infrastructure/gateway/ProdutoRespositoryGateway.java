@@ -2,15 +2,12 @@ package com.fiap.lanchonete.infrastructure.gateway;
 
 import java.util.List;
 
-import org.springframework.stereotype.Component;
-
 import com.fiap.lanchonete.application.gateways.ProdutoGateway;
 import com.fiap.lanchonete.domain.entity.Categoria;
 import com.fiap.lanchonete.domain.entity.Produto;
 import com.fiap.lanchonete.infrastructure.persistence.ProdutoEntity;
 import com.fiap.lanchonete.infrastructure.persistence.ProdutoRepository;
 
-@Component
 public class ProdutoRespositoryGateway implements ProdutoGateway {
 
 	private final ProdutoRepository repository;

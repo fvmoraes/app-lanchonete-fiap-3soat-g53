@@ -24,12 +24,12 @@ public class ProdutoConfig {
 	}
 
 	@Bean
-	ProdutoEntityMapper clienteMapper() {
+	ProdutoEntityMapper produtoMapper() {
 		return new ProdutoEntityMapper();
 	}
 
 	@Bean
-	ProdutoRequestMapper clienteRequestMapper() {
+	ProdutoRequestMapper produtoRequestMapper() {
 		return new ProdutoRequestMapper();
 	}
 }
