@@ -3,6 +3,7 @@ package com.fiap.lanchonete.infrastructure.controller;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,9 +14,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fiap.lanchonete.application.usercases.PedidoInteractor;
+import com.fiap.lanchonete.application.usercases.exceptions.PedidoComProdutoNaoCadastradoException;
+import com.fiap.lanchonete.application.usercases.exceptions.PedidoNaoEncontradoException;
 import com.fiap.lanchonete.domain.entity.StatusPedido;
-import com.fiap.lanchonete.dominio.exceptions.PedidoComProdutoNaoCadastradoException;
-import com.fiap.lanchonete.dominio.exceptions.PedidoNaoEncontradoException;
+import com.fiap.lanchonete.infrastructure.controller.mapper.PedidoRequestMapper;
+import com.fiap.lanchonete.infrastructure.controller.requestsdto.PedidoPagamentoResponse;
+import com.fiap.lanchonete.infrastructure.controller.requestsdto.PedidoRequest;
+import com.fiap.lanchonete.infrastructure.controller.requestsdto.PedidoResponse;
 
 //hexa
 @RestController
@@ -41,20 +46,25 @@ public class PedidoController {
 	public PedidoResponse buscaPedidosPorId(@PathVariable Integer id) {
 		return  mapper.paraResponse(interactor.buscaPedidoId(id));		
 	};
+	@GetMapping("pagamento/{id}")
+	public PedidoPagamentoResponse buscaPedidosPagamento(@PathVariable Integer id) {
+		return  mapper.paraResponseDTO(interactor.buscaPedidoId(id));		
+	};
+	
 	@GetMapping("/status")
 	public List<PedidoResponse> buscaPedidosPorStatus(@RequestBody StatusPedido status) {
 		return interactor.buscaPedidosPorStatus(status).stream().map(mapper::paraResponse).toList();		
 	};
 	
 	
-	// FAKE CHECKOUT deverá ser implementado o pagamento junto ao realizar o pedido
+	// FAKE CHECKOUT 
 	@PostMapping
-	public ResponseEntity<PedidoResponse> realizarPedido(@RequestBody PedidoRequest pedido){
+	public ResponseEntity<String> realizarPedido(@RequestBody PedidoRequest pedido){
 		try {
 			PedidoResponse response = mapper.paraResponse(interactor.realizaPedido(mapper.paraObjetoDominio(pedido)));
-			return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
+			return new ResponseEntity<>(response.toString(), HttpStatus.ACCEPTED);
 		} catch (PedidoComProdutoNaoCadastradoException e) {
-			return new ResponseEntity<>(null,HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>("Pedido Com Produto Nao Cadastrado Exception",HttpStatus.BAD_REQUEST);
 		}
 	}
 	
@@ -68,14 +78,22 @@ public class PedidoController {
 		}
 	}
 	
-	@PutMapping("status/{id}")
-	public ResponseEntity<String> atualizaPedidoStatus(@PathVariable Integer id, @RequestBody StatusPedido status){
+	@PutMapping("status/{id}/{statusRequest}")
+	public ResponseEntity<String> atualizaPedidoStatus(@PathVariable Integer id, @PathVariable String statusRequest){
 		try {
-			interactor.atualizaPedidoStatus(id, status);
-			return new ResponseEntity<>(String.format("Pedido atualizado para" + status.toString()+ "com sucesso", status), HttpStatus.ACCEPTED);
+			
+			interactor.atualizaPedidoStatus(id, StatusPedido.valueOf(statusRequest));
+			return new ResponseEntity<>(String.format("Pedido atualizado para" + statusRequest.toString()+ "com sucesso", statusRequest), HttpStatus.ACCEPTED);
 		} catch (PedidoNaoEncontradoException e) {
 			return new ResponseEntity<>("Pedido não encontrado",HttpStatus.BAD_REQUEST);
 		}
+	}
+	//WEBHOOK
+	@PostMapping("mercadopago")
+	ResponseEntity<String> webHookMercadoPagoSimulator(Integer id) throws PedidoNaoEncontradoException{
+		interactor.atualizaPedidoPagamneto(id);
+		return ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON).body("accepted");
+		
 	}
 	
 }

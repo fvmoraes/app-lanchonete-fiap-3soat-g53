@@ -5,9 +5,9 @@ import org.springframework.context.annotation.Configuration;
 
 import com.fiap.lanchonete.application.gateways.ProdutoGateway;
 import com.fiap.lanchonete.application.usercases.ProdutoInteractor;
-import com.fiap.lanchonete.infrastructure.controller.ProdutoRequestMapper;
-import com.fiap.lanchonete.infrastructure.gateway.ProdutoEntityMapper;
+import com.fiap.lanchonete.infrastructure.controller.mapper.ProdutoRequestMapper;
 import com.fiap.lanchonete.infrastructure.gateway.ProdutoRespositoryGateway;
+import com.fiap.lanchonete.infrastructure.gateway.mapper.ProdutoEntityMapper;
 import com.fiap.lanchonete.infrastructure.persistence.ProdutoRepository;
 
 @Configuration

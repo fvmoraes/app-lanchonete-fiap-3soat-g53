@@ -1,4 +1,4 @@
-package com.fiap.lanchonete.infrastructure.persistence;
+package com.fiap.lanchonete.infrastructure.persistence.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

@@ -5,8 +5,9 @@ import java.util.List;
 import com.fiap.lanchonete.application.gateways.ProdutoGateway;
 import com.fiap.lanchonete.domain.entity.Categoria;
 import com.fiap.lanchonete.domain.entity.Produto;
-import com.fiap.lanchonete.infrastructure.persistence.ProdutoEntity;
+import com.fiap.lanchonete.infrastructure.gateway.mapper.ProdutoEntityMapper;
 import com.fiap.lanchonete.infrastructure.persistence.ProdutoRepository;
+import com.fiap.lanchonete.infrastructure.persistence.entity.ProdutoEntity;
 
 public class ProdutoRespositoryGateway implements ProdutoGateway {
 

@@ -1,16 +1,17 @@
-package com.fiap.lanchonete.infrastructure.controller;
+package com.fiap.lanchonete.infrastructure.controller.mapper;
 
 import com.fiap.lanchonete.domain.entity.Produto;
 import com.fiap.lanchonete.domain.entity.ProdutoResponse;
+import com.fiap.lanchonete.infrastructure.controller.requestsdto.ProdutoRequest;
 
 public class ProdutoRequestMapper {
 	
-	Produto paraObjetoDominio(ProdutoRequest produtoRequest) {
+	public Produto paraObjetoDominio(ProdutoRequest produtoRequest) {
 		return new Produto(produtoRequest.categoria(), produtoRequest.nome(), produtoRequest.descricao(), produtoRequest.valor());
 
 	}
 	
-	ProdutoResponse paraResponse(Produto Produto) {
+	public ProdutoResponse paraResponse(Produto Produto) {
 		return new ProdutoResponse(Produto.categoria(), Produto.nome(), Produto.descricao(), Produto.valor());
 	}
 }

@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fiap.lanchonete.application.usercases.ClienteInteractor;
-import com.fiap.lanchonete.domain.entity.Cliente;
-import com.fiap.lanchonete.dominio.exceptions.ClientJaCadastradoException;
-import com.fiap.lanchonete.dominio.exceptions.ClientNaoEncontradoException;
+import com.fiap.lanchonete.application.usercases.exceptions.ClientJaCadastradoException;
+import com.fiap.lanchonete.application.usercases.exceptions.ClientNaoEncontradoException;
+import com.fiap.lanchonete.infrastructure.controller.mapper.ClenteRequestMapper;
+import com.fiap.lanchonete.infrastructure.controller.requestsdto.ClenteRequest;
+import com.fiap.lanchonete.infrastructure.controller.requestsdto.ClienteResponse;
 
 @RestController
 @RequestMapping("api/v1/cliente")
@@ -24,19 +26,25 @@ public class ClienteController {
 
 	private final ClienteInteractor interactor;
 	private final ClenteRequestMapper mapper;
+	
 	public ClienteController(ClienteInteractor interactor, ClenteRequestMapper mapper) {
 		this.interactor = interactor;
 		this.mapper = mapper;
 	}
 
 	@GetMapping
-	public List<Cliente> buscarClientes() {
-		return interactor.buscarClientes();
+	public List<ClienteResponse> buscarClientes() {
+		return interactor.buscarClientes().stream().map(mapper::paraResponse).toList();	
 	}
 
 	@GetMapping("{cpf}")
-	public Cliente buscaClienteCpf(@PathVariable String cpf) {
-			return interactor.buscaClienteCpf(cpf);
+	public ResponseEntity<ClienteResponse> buscaClienteCpf(@PathVariable String cpf) {
+			var cliente = interactor.buscaClienteCpf(cpf);
+			if (cliente != null) {
+				return new ResponseEntity<> (mapper.paraResponse(cliente),HttpStatus.FOUND);
+			}
+				return new ResponseEntity<> (null,HttpStatus.NOT_FOUND);
+			
 	}
 
 	@PostMapping
@@ -65,7 +73,7 @@ public class ClienteController {
 	@PutMapping
 	public ResponseEntity<String> atualizaClientes(@RequestBody ClenteRequest dto) {
 		try {
-			interactor.AtualizaCliente(mapper.paraCliente(dto));
+			interactor.atualizaCliente(mapper.paraCliente(dto));
 			return new ResponseEntity<>("Cliente atualizado com sucesso", HttpStatus.OK);
 
 		} catch (ClientNaoEncontradoException e) {

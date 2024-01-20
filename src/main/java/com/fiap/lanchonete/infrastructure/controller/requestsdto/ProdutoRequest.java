@@ -1,4 +1,4 @@
-package com.fiap.lanchonete.infrastructure.controller;
+package com.fiap.lanchonete.infrastructure.controller.requestsdto;
 
 import java.math.BigDecimal;
 

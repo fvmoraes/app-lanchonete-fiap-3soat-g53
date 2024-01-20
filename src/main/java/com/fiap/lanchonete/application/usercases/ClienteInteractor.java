@@ -3,9 +3,9 @@ package com.fiap.lanchonete.application.usercases;
 import java.util.List;
 
 import com.fiap.lanchonete.application.gateways.ClienteGateway;
+import com.fiap.lanchonete.application.usercases.exceptions.ClientJaCadastradoException;
+import com.fiap.lanchonete.application.usercases.exceptions.ClientNaoEncontradoException;
 import com.fiap.lanchonete.domain.entity.Cliente;
-import com.fiap.lanchonete.dominio.exceptions.ClientJaCadastradoException;
-import com.fiap.lanchonete.dominio.exceptions.ClientNaoEncontradoException;
 
 public class ClienteInteractor {
 
@@ -21,18 +21,14 @@ public class ClienteInteractor {
 		return clienteGateway.buscaClientes();
 
 	}
-
 	
 	public Cliente criaCliente(Cliente cliente) throws ClientJaCadastradoException {
+		if (clienteGateway.buscaClientes(cliente.cpf()) != null) {
+			throw new ClientJaCadastradoException();
+		}
+		
 		return clienteGateway.criaCliente(cliente);
 	}
-
-	/*
-	public Cliente AtualizaCliente(ClienteDto dto) throws ClientNaoEncontradoException {
-		return clienteGateway.atualizaCliente();
-
-	}
-*/
 	
 	public Cliente buscaClienteCpf(String cpf) {
 		return clienteGateway.buscaClientes(cpf);
@@ -52,7 +48,9 @@ public class ClienteInteractor {
 	}
 
 
-	public void AtualizaCliente(Cliente cliente) throws ClientNaoEncontradoException {
+	public void atualizaCliente(Cliente cliente) throws ClientNaoEncontradoException {
+		if (clienteGateway.buscaClientes(cliente.cpf()) == null)
+			throw new ClientNaoEncontradoException();
 		clienteGateway.atualiziaCliente(cliente);
 		
 	}

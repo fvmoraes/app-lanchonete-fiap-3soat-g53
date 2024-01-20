@@ -2,8 +2,8 @@ package com.fiap.lanchonete.application.gateways;
 
 import java.util.List;
 
+import com.fiap.lanchonete.application.usercases.exceptions.ClientNaoEncontradoException;
 import com.fiap.lanchonete.domain.entity.Cliente;
-import com.fiap.lanchonete.dominio.exceptions.ClientNaoEncontradoException;
 
 public interface ClienteGateway { 
 	
@@ -17,6 +17,6 @@ public interface ClienteGateway {
 
 	String deletaCliente(String cpf);
 
-	Cliente atualiziaCliente(Cliente cliente) throws ClientNaoEncontradoException;
+	Cliente atualiziaCliente(Cliente cliente);
 
 }

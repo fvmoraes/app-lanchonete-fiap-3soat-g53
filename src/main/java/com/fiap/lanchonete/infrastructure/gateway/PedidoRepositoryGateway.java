@@ -4,13 +4,14 @@ import java.util.List;
 import java.util.Optional;
 
 import com.fiap.lanchonete.application.gateways.PedidoGateway;
+import com.fiap.lanchonete.application.usercases.exceptions.PedidoComProdutoNaoCadastradoException;
+import com.fiap.lanchonete.application.usercases.exceptions.PedidoNaoEncontradoException;
 import com.fiap.lanchonete.domain.entity.Pedido;
 import com.fiap.lanchonete.domain.entity.StatusPedido;
-import com.fiap.lanchonete.dominio.exceptions.PedidoComProdutoNaoCadastradoException;
-import com.fiap.lanchonete.dominio.exceptions.PedidoNaoEncontradoException;
-import com.fiap.lanchonete.infrastructure.persistence.PedidoEntity;
+import com.fiap.lanchonete.infrastructure.gateway.mapper.PedidoEntityMapper;
 import com.fiap.lanchonete.infrastructure.persistence.PedidoRepository;
 import com.fiap.lanchonete.infrastructure.persistence.ProdutoRepository;
+import com.fiap.lanchonete.infrastructure.persistence.entity.PedidoEntity;
 
 public class PedidoRepositoryGateway implements PedidoGateway {
 
@@ -26,44 +27,22 @@ public class PedidoRepositoryGateway implements PedidoGateway {
 	}
 
 	@Override
-	public Pedido CriaPedido(Pedido pedido) throws PedidoComProdutoNaoCadastradoException {
-
-		if (pedido.nomeLanche() != null) {
-			produtoRepository.findByNome(pedido.nomeLanche());
-		}
-		if (pedido.nomeBebida() != null) {
-			produtoRepository.findByNome(pedido.nomeBebida());
-		}
-		if (pedido.nomeAcompanhamento() != null) {
-			produtoRepository.findByNome(pedido.nomeAcompanhamento());
-		}
-		if (pedido.nomeSobremesa() != null) {
-			produtoRepository.findByNome(pedido.nomeSobremesa());
-		}
-		repository.save(mapper.paraPedidoEntity(pedido));
-		return pedido;
+	public Pedido criaPedido(Pedido pedido) throws PedidoComProdutoNaoCadastradoException {
+		return mapper.paraObjetoDominio(repository.save(mapper.paraPedidoEntity(pedido)));
 	}
 
 	@Override
-	public void atualizaPedido(Pedido pedido) throws PedidoNaoEncontradoException {
-		Optional<PedidoEntity> pedidoParaAtualizar = repository.findById(pedido.idPedido());
-
-		if (pedidoParaAtualizar.isEmpty())
-			throw new PedidoNaoEncontradoException();
-		
-		
-		PedidoEntity pedidoAtaulizado = pedidoParaAtualizar.get();
-		pedidoAtaulizado.setNomeAcompanhamento(pedido.nomeAcompanhamento());
-		pedidoAtaulizado.setNomeBebida(pedido.nomeBebida());
-		pedidoAtaulizado.setNomeLanche(pedido.nomeLanche());
-		pedidoAtaulizado.setStatusPedido(pedido.statusPedido());
-		repository.save(pedidoAtaulizado);
+	public void atualizaPedido(Pedido pedido) {
+		repository.save(mapper.paraPedidoEntity(pedido));
 
 	}
 
 	@Override
 	public List<Pedido> buscaPedidos() {
-		List<PedidoEntity> pedidos = repository.findAll();
+		List<PedidoEntity> pedidos = repository.findAllByStatusPedidoOrderById(StatusPedido.Pronto);
+		pedidos.addAll(repository.findAllByStatusPedidoOrderById(StatusPedido.EmPreparacao).stream().toList());
+		pedidos.addAll(repository.findAllByStatusPedidoOrderById(StatusPedido.Recebido).stream().toList());
+
 		return pedidos.stream().map(mapper::paraObjetoDominio).toList();
 	}
 
@@ -73,16 +52,6 @@ public class PedidoRepositoryGateway implements PedidoGateway {
 		if (pedidos.isPresent())
 			return mapper.paraObjetoDominio(pedidos.get());
 		return null;
-	}
-
-	@Override
-	public void atualizaPedidoStatus(Integer id, StatusPedido status) throws PedidoNaoEncontradoException {
-		Optional<PedidoEntity> pedidoAtualizar = repository.findById(id);
-		if (pedidoAtualizar.isPresent()) {
-			PedidoEntity pedidoAtualizado = pedidoAtualizar.get();
-			pedidoAtualizado.setStatusPedido(status);
-			repository.save(pedidoAtualizado);
-		}
 	}
 
 	@Override

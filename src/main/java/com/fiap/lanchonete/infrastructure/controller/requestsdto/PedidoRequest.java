@@ -1,8 +1,9 @@
-package com.fiap.lanchonete.infrastructure.controller;
+package com.fiap.lanchonete.infrastructure.controller.requestsdto;
 
+import com.fiap.lanchonete.domain.entity.StatusPagamento;
 import com.fiap.lanchonete.domain.entity.StatusPedido;
 
 public record PedidoRequest(Integer idPedido, String nomeLanche, String nomeAcompanhamento, String nomeBebida, String nomeSobremesa,
-		 StatusPedido statusPedido)  {
+		 StatusPedido statusPedido, StatusPagamento statusPagamento)  {
 
 }

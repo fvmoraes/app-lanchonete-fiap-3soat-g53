@@ -1,7 +1,8 @@
-package com.fiap.lanchonete.infrastructure.persistence;
+package com.fiap.lanchonete.infrastructure.persistence.entity;
 
 
 
+import com.fiap.lanchonete.domain.entity.StatusPagamento;
 import com.fiap.lanchonete.domain.entity.StatusPedido;
 
 import jakarta.persistence.Entity;
@@ -23,31 +24,35 @@ public class PedidoEntity {
 	String nomeAcompanhamento;
 	String nomeBebida;
 	String nomeSobremesa;
-
+	 
 	@NotNull
 	StatusPedido statusPedido;
 	
-	
+	@NotNull
+    StatusPagamento statusPagamento;
+
 	public PedidoEntity() {
 		
 	}
 	public PedidoEntity(Integer id, String nomeLanche, String nomeAcompanhamento, String nomeBebida, String nomeSobremesa,
-			@NotNull StatusPedido statusPedido2) {
+			@NotNull StatusPedido statusPedido2, StatusPagamento statusPagamento) {
 		this.id = id;
 		this.nomeLanche = nomeLanche;
 		this.nomeAcompanhamento = nomeAcompanhamento;
 		this.nomeBebida = nomeBebida;
 		this.nomeSobremesa = nomeSobremesa;
 		this.statusPedido = statusPedido2;
+		this.statusPagamento = statusPagamento;
 	}
 	
 	public PedidoEntity( String nomeLanche, String nomeAcompanhamento, String nomeBebida, String nomeSobremesa,
-			@NotNull StatusPedido statusPedido) {
+			@NotNull StatusPedido statusPedido, StatusPagamento statusPagamento) {
 		this.nomeLanche = nomeLanche;
 		this.nomeAcompanhamento = nomeAcompanhamento;
 		this.nomeBebida = nomeBebida;
 		this.nomeSobremesa = nomeSobremesa;
 		this.statusPedido = statusPedido;
+		this.statusPagamento = statusPagamento;
 	}
 	
 	public Integer getId() {
@@ -82,6 +87,12 @@ public class PedidoEntity {
 	}
 	public void setStatusPedido(StatusPedido statusPedido) {
 		this.statusPedido = statusPedido;
+	}
+	public StatusPagamento getStatusPagamento() {
+		return statusPagamento;
+	}
+	public void setStatusPagamento(StatusPagamento statusPagamento) {
+		this.statusPagamento = statusPagamento;
 	}
 	
 	

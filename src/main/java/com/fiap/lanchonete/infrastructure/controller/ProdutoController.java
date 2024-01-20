@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fiap.lanchonete.application.usercases.ProdutoInteractor;
+import com.fiap.lanchonete.application.usercases.exceptions.ProdutoJaCadastradoException;
+import com.fiap.lanchonete.application.usercases.exceptions.ProdutoNaoEncontradoException;
 import com.fiap.lanchonete.domain.entity.Categoria;
 import com.fiap.lanchonete.domain.entity.ProdutoResponse;
-import com.fiap.lanchonete.dominio.exceptions.ProdutoJaCadastradoException;
-import com.fiap.lanchonete.dominio.exceptions.ProdutoNaoEncontradoException;
+import com.fiap.lanchonete.infrastructure.controller.mapper.ProdutoRequestMapper;
+import com.fiap.lanchonete.infrastructure.controller.requestsdto.ProdutoRequest;
 
 
 @RestController
@@ -27,14 +29,15 @@ public class ProdutoController {
 
 	private final ProdutoInteractor interactor;
 	private final ProdutoRequestMapper mapper;
-	
+	private String PRODUTO_DELETADO = "Produto deletado com sucesso";
+
 	public ProdutoController(ProdutoInteractor interactor, ProdutoRequestMapper mapper) {
 		this.interactor = interactor;
 		this.mapper = mapper;
 	}
 	@GetMapping
-	public List<ProdutoResponse> buscarProdutos() {
-		return interactor.buscarProdutos().stream().map(mapper::paraResponse).toList();
+	public ResponseEntity<List<ProdutoResponse>> buscarProdutos() {
+		return new ResponseEntity<>(interactor.buscarProdutos().stream().map(mapper::paraResponse).toList(), HttpStatus.ACCEPTED);
 	}
 	
 	@GetMapping("{categoria}")
@@ -66,13 +69,13 @@ public class ProdutoController {
 	@DeleteMapping
 	public ResponseEntity<String> deletaProduto(@RequestBody ProdutoRequest produtoRequest) {
 		interactor.deletaProduto(produtoRequest.nome());
-		return new ResponseEntity<>("Produto atualizado com sucesso", HttpStatus.OK);
+		return new ResponseEntity<>(PRODUTO_DELETADO, HttpStatus.OK);
 
 	}
 	@DeleteMapping("{nome}")
 	public ResponseEntity<String> deletaProdutoNome(@PathVariable String nome) {
 		interactor.deletaProduto(nome);
-		return new ResponseEntity<>("Produto atualizado com sucesso", HttpStatus.OK);
+		return new ResponseEntity<>(PRODUTO_DELETADO, HttpStatus.OK);
 
 	}
 }

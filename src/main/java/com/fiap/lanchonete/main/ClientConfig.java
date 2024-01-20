@@ -5,9 +5,9 @@ import org.springframework.context.annotation.Configuration;
 
 import com.fiap.lanchonete.application.gateways.ClienteGateway;
 import com.fiap.lanchonete.application.usercases.ClienteInteractor;
-import com.fiap.lanchonete.infrastructure.controller.ClenteRequestMapper;
-import com.fiap.lanchonete.infrastructure.gateway.ClienteEntityMapper;
+import com.fiap.lanchonete.infrastructure.controller.mapper.ClenteRequestMapper;
 import com.fiap.lanchonete.infrastructure.gateway.ClienteRespositoryGateway;
+import com.fiap.lanchonete.infrastructure.gateway.mapper.ClienteEntityMapper;
 import com.fiap.lanchonete.infrastructure.persistence.ClienteRepository;
 
 @Configuration
