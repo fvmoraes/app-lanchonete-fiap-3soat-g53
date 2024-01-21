@@ -5,7 +5,8 @@ import org.springframework.context.annotation.Configuration;
 
 import com.fiap.lanchonete.application.gateways.PedidoGateway;
 import com.fiap.lanchonete.application.gateways.ProdutoGateway;
-import com.fiap.lanchonete.application.usercases.PedidoInteractor;
+import com.fiap.lanchonete.application.usercases.PedidoUseCases;
+import com.fiap.lanchonete.application.usercases.PedidoUseCasesImp;
 import com.fiap.lanchonete.infrastructure.controller.mapper.PedidoRequestMapper;
 import com.fiap.lanchonete.infrastructure.gateway.PedidoRepositoryGateway;
 import com.fiap.lanchonete.infrastructure.gateway.mapper.PedidoEntityMapper;
@@ -16,8 +17,8 @@ import com.fiap.lanchonete.infrastructure.persistence.ProdutoRepository;
 public class PedidoConfig {
 
 	@Bean
-	PedidoInteractor pedidoInteractorBean(PedidoGateway PedidoGateway, ProdutoGateway produtoGateway) {
-		return new PedidoInteractor(PedidoGateway, produtoGateway);
+	PedidoUseCases pedidoInteractorBean(PedidoGateway PedidoGateway, ProdutoGateway produtoGateway) {
+		return new PedidoUseCasesImp(PedidoGateway, produtoGateway);
 	}
 
 	@Bean

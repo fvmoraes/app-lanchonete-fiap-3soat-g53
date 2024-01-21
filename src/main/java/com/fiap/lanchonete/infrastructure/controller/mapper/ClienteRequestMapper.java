@@ -4,7 +4,7 @@ import com.fiap.lanchonete.domain.entity.Cliente;
 import com.fiap.lanchonete.infrastructure.controller.requestsdto.ClenteRequest;
 import com.fiap.lanchonete.infrastructure.controller.requestsdto.ClienteResponse;
 
-public class ClenteRequestMapper {
+public class ClienteRequestMapper {
 
 	public Cliente paraCliente(ClenteRequest request) {
 		return new Cliente(request.cpf(),request.nome(), request.email());

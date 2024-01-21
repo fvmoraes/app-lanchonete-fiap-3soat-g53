@@ -30,7 +30,7 @@ public class ClienteRespositoryGateway implements ClienteGateway {
 	@Override
 	public List<Cliente> buscaClientes() {
 		List<ClienteEntity> clientsEntity = clienteRepository.findAll();
-		return clientsEntity.stream().map(cliente -> clienteMapper.paraObject(cliente)).collect(Collectors.toList());
+		return clientsEntity.stream().map(cliente -> clienteMapper.paraObject(cliente)).toList();
 	}
 
 
