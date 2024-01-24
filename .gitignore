@@ -1,2 +1,8 @@
 **/.DS_Store
 build/volumes
+
+# Eclipse artifacts and output dirs
+**/.project
+**/.settings
+**/.classpath
+**/target
