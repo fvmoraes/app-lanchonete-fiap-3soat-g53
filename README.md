@@ -58,8 +58,8 @@ docker start postgres_fiap_3soat_g53
 ![](/img/swagger.png)
 ### Exemplo de uso com o Postman:
 > No menu suspenso Nome do Workspace, selecione Importar. Escolha uma opção para encontrar o arquivo e importe o arquivo "FIAP.postman_collection.json".
-> Para mais informações: [Documentação do Insomnia](https://docs.insomnia.rest/insomnia/import-export-data)
-![](/img/insomnia.png)
+> Para mais informações: [Documentação do Postman](https://learning.postman.com/docs/introduction/overview/)
+![](/img/postman.png)
 
 ---
 ---
