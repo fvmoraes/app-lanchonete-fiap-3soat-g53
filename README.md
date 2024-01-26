@@ -34,7 +34,8 @@
 - [Docker Compose](https://docs.docker.com/compose/install/)
 
 ### Como executar o projeto no meu computador?
-> O comando inicial pode ser o seguinte:
+> Não é necessario criar databases, ou rodar o projeto de forma local, e sim apenas utilizar um docker-compose que existe neste repositorio.
+> Dentro do repositorio da aplicação, o comando inicial pode ser o seguinte:
 ```sh
 docker-compose up
 ``````
@@ -51,13 +52,14 @@ docker start postgres_fiap_3soat_g53
 - ``` http://localhost:54321/login``` concede acesso ao PGAdmin que já possui a configuração com o banco de dados. Use para fazer login no pgadmin: "3soatg53@fiap.com" e "3soatg53" e, para confirmação de acesso ao banco de dados, a senha é "postgres".
 - ``` 172.34.0.2 ``` é o endereço IP do banco de dados, acessível com as credenciais fiap:postgres:postgres na porta 5432.
 ### Exemplo de acesso ao PGAdmin:
-> [pgadmin/login](http://localhost:54321/login)
-![](/img/pgadmin.png)
-### Exemplo de uso com o Swagger:
-> [/api/v1/swagger/index.html](http://localhost:8080/swagger-ui/index.html)
+> O PgAdmin já está configurado para acesso, utilize o endereço: [pgadmin/login](http://localhost:54321/login)
+![](/img/pgadmin1.png)
+![](/img/pgadmin2.png)
+### Exemplo de acesso com o Swagger:
+> O Swagger possui os endpoints disponiveis na API, utilize o endereço: [swagger/index.html](http://localhost:8080/swagger-ui/index.html)
 ![](/img/swagger.png)
 ### Exemplo de uso com o Postman:
-> No menu suspenso Nome do Workspace, selecione Importar. Escolha uma opção para encontrar o arquivo e importe o arquivo "FIAP.postman_collection.json".
+> No menu suspenso do Workspace, selecione Importar. Escolha uma opção para encontrar o arquivo e importe o arquivo "FIAP.postman_collection.json".
 > Para mais informações: [Documentação do Postman](https://learning.postman.com/docs/introduction/overview/)
 ![](/img/postman.png)
 
@@ -65,30 +67,31 @@ docker start postgres_fiap_3soat_g53
 ---
 ## Mais informações sobre a API
 ### Lista de endpoints
-- ```GET http://localhost:8080/api/v1/produto/```
-- ```PUT http://localhost:8080/api/v1/produto/```
-- ```POST http://localhost:8080/api/v1/produto/```
-- ```DELETE http://localhost:8080/api/v1/produto/```
-- ```GET http://localhost:8080/api/v1/produto/{categoria}```
-- ```DELETE http://localhost:8080/api/v1/produto/{nome}```
-- 
-- ```GET http://localhost:8080/api/v1/pedido/```
-- ```PUT http://localhost:8080/api/v1/pedido/```
-- ```POST http://localhost:8080/api/v1/pedido/```
-- ```PUT http://localhost:8080/api/v1/pedido/```
-- ```POST http://localhost:8080/api/v1/pedido/```
-- ```GET http://localhost:8080/api/v1/pedido/```
-- ```GET http://localhost:8080/api/v1/pedido/```
-- ```GET http://localhost:8080/api/v1/pedido/```
-- 
-- ```GET http://localhost:8080/api/v1/cliente/```
-- ```PUT http://localhost:8080/api/v1/cliente/```
-- ```POST http://localhost:8080/api/v1/cliente/```
-- ```DELETE http://localhost:8080/api/v1/cliente/```
-- ```GET http://localhost:8080/api/v1/cliente/```
-- ```DELETE http://localhost:8080/api/v1/cliente/```
-- 
-- ```GET http://localhost:8080/swagger-ui/index.html``` Swagger
+> Produto
+- GET http://localhost:8080/api/v1/produto
+- PUT http://localhost:8080/api/v1/produto
+- POST http://localhost:8080/api/v1/produto
+- DELETE http://localhost:8080/api/v1/produto
+- GET http://localhost:8080/api/v1/produto/{categoria}
+- DELETE http://localhost:8080/api/v1/produto/{nome}
+> Pedido
+- GET http://localhost:8080/api/v1/pedido
+- PUT http://localhost:8080/api/v1/pedido
+- POST http://localhost:8080/api/v1/pedido
+- PUT http://localhost:8080/api/v1/pedido/status/{id}/{statusRequest}
+- POST http://localhost:8080/api/v1/pedido/pagamento/mercadopago/{topic}/{id}
+- GET http://localhost:8080/api/v1/pedido/{id}
+- GET http://localhost:8080/api/v1/pedido/status
+- GET http://localhost:8080/api/v1/pedido/pagamento/{id}
+> Cliente
+- GET http://localhost:8080/api/v1/cliente
+- PUT http://localhost:8080/api/v1/cliente
+- POST http://localhost:8080/api/v1/cliente
+- DELETE http://localhost:8080/api/v1/cliente
+- GET http://localhost:8080/api/v1/cliente/{cpf}
+- DELETE http://localhost:8080/api/v1/cliente/{cpf}
+> Swagger
+- GET http://localhost:8080/swagger-ui/index.html
 ---
 ---
 ## Referências
