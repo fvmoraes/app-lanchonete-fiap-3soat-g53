@@ -34,7 +34,8 @@
 - [Docker Compose](https://docs.docker.com/compose/install/)
 
 ### Como executar o projeto no meu computador?
-> O comando inicial pode ser o seguinte:
+> Não é necessario criar databases, ou rodar o projeto de forma local, e sim apenas utilizando um docker-compose que existe neste repositorio.
+>dentro do repositorio da aplicação, o comando inicial pode ser o seguinte:
 ```sh
 docker-compose up
 ``````
@@ -58,7 +59,7 @@ docker start postgres_fiap_3soat_g53
 > O Swagger possui os endpoints disponiveis na API, utilize o endereço: [swagger/index.html](http://localhost:8080/swagger-ui/index.html)
 ![](/img/swagger.png)
 ### Exemplo de uso com o Postman:
-> No menu suspenso Nome do Workspace, selecione Importar. Escolha uma opção para encontrar o arquivo e importe o arquivo "FIAP.postman_collection.json".
+> No menu suspenso do Workspace, selecione Importar. Escolha uma opção para encontrar o arquivo e importe o arquivo "FIAP.postman_collection.json".
 > Para mais informações: [Documentação do Postman](https://learning.postman.com/docs/introduction/overview/)
 ![](/img/postman.png)
 
