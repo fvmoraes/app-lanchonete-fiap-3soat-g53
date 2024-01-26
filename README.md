@@ -48,9 +48,9 @@ docker start postgres_fiap_3soat_g53
 ### Como acessar as funcionalidades disponíveis?
 > Os seguintes endereços privados são fixos na configuração do Docker-Compose e proporcionam acesso às opções do projeto:
 
-- ``` http://172.33.0.4:9000/api/v1/ ``` concede acesso à API e aos pontos finais do Swagger.
-- ``` http://172.33.0.3/ ``` concede acesso ao PGAdmin que já possui a configuração com o banco de dados. Use para fazer login no pgadmin: "admin@foobar.com" e "123456" e, para confirmação de acesso ao banco de dados, a senha é "foobar".
-- ``` 172.33.0.2 ``` é o endereço IP do banco de dados, acessível com as credenciais foobar:foobar:foobar na porta 5432.
+- ``` http://localhost:8080/``` concede acesso à API(/api/v1/*) e ao endpoint do Swagger.
+- ``` http://localhost:54321/login``` concede acesso ao PGAdmin que já possui a configuração com o banco de dados. Use para fazer login no pgadmin: "3soatg53@fiap.com" e "3soatg53" e, para confirmação de acesso ao banco de dados, a senha é "postgres".
+- ``` 172.34.0.2 ``` é o endereço IP do banco de dados, acessível com as credenciais fiap:postgres:postgres na porta 5432.
 ### Exemplo de acesso ao PGAdmin:
 > [pgadmin/login](http://localhost:54321/login)
 ![](/img/pgadmin.png)
