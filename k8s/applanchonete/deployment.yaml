@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: applanchonete-deployment
+  name: applanchonete
 spec:
   replicas: 1
   selector:
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: applanchonete
-        image: applanchonetetok8s:latest
+        image: fvmoraes/applanchonetetok8s:latest
         ports:
         - containerPort: 8080
         resources:

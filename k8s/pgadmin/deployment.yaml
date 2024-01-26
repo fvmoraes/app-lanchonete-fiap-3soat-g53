@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pgadmin-deployment
+  name: pgadmin
 spec:
   replicas: 1
   selector:
