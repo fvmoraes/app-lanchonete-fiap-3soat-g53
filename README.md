@@ -52,46 +52,54 @@ docker start postgres_fiap_3soat_g53
 - ``` http://172.33.0.3/ ``` concede acesso ao PGAdmin que já possui a configuração com o banco de dados. Use para fazer login no pgadmin: "admin@foobar.com" e "123456" e, para confirmação de acesso ao banco de dados, a senha é "foobar".
 - ``` 172.33.0.2 ``` é o endereço IP do banco de dados, acessível com as credenciais foobar:foobar:foobar na porta 5432.
 ### Exemplo de acesso ao PGAdmin:
-> [pgadmin/login](http://172.33.0.3/login)
+> [pgadmin/login](http://localhost:54321/login)
 ![](/img/pgadmin.png)
 ### Exemplo de uso com o Swagger:
-> [/api/v1/swagger/index.html](http://172.33.0.4:9000/api/v1/swagger/index.html)
+> [/api/v1/swagger/index.html](http://localhost:8080/swagger-ui/index.html)
 ![](/img/swagger.png)
-### Exemplo de uso com o Insomnia:
-> Nas opções do aplicativo, no menu suspenso Nome do Documento ou Coleção, selecione Importar/Exportar. Escolha uma opção no menu suspenso Importar Dados. Importe o arquivo "Insomnia_api-go-gin.yaml".
+### Exemplo de uso com o Postman:
+> No menu suspenso Nome do Workspace, selecione Importar. Escolha uma opção para encontrar o arquivo e importe o arquivo "colectionPostman.txt".
 > Para mais informações: [Documentação do Insomnia](https://docs.insomnia.rest/insomnia/import-export-data)
 ![](/img/insomnia.png)
-### Exemplo de acesso ao endpoint "Mock":
-> [/api/v1/foobar/mock](http://172.33.0.4:9000/api/v1/foobar/mock)
-![](/img/mock.png)
-### Exemplos de geração de testes
-```sh
-go test
-```
-![](/img/test.png)
+
 ---
 ---
 ## Mais informações sobre a API
-### Lista de pontos finais
-- ```GET http://172.33.0.4:9000/api/v1/foobar/mock``` Para mostrar o mock
-- ```POST http://172.33.0.4:9000/api/v1/foobar/``` Para criar Foobar
-- ```GET http://172.33.0.4:9000/api/v1/foobar/``` Para mostrar todos os Foobar
-- ```GET http://172.33.0.4:9000/api/v1/foobar/:id``` Para mostrar Foobar por ID
-- ```GET http://172.33.0.4:9000/api/v1/foobar/:reg``` Para mostrar Foobar por Registro
-- ```PATCH http://172.33.0.4:9000/api/v1/foobar/:id``` Para editar Foobar por ID
-- ```DELETE http://172.33.0.4:9000/api/v1/foobar/:id``` Para excluir Foobar por ID
-- ```GET http://172.33.0.4:9000/api/v1/swagger/index.html``` Swagger
+### Lista de endpoints
+- ```GET http://localhost:8080/api/v1/produto/```
+- ```PUT http://localhost:8080/api/v1/produto/```
+- ```POST http://localhost:8080/api/v1/produto/```
+- ```DELETE http://localhost:8080/api/v1/produto/```
+- ```GET http://localhost:8080/api/v1/produto/{categoria}```
+- ```DELETE http://localhost:8080/api/v1/produto/{nome}```
+- 
+- ```GET http://localhost:8080/api/v1/pedido/```
+- ```PUT http://localhost:8080/api/v1/pedido/```
+- ```POST http://localhost:8080/api/v1/pedido/```
+- ```PUT http://localhost:8080/api/v1/pedido/```
+- ```POST http://localhost:8080/api/v1/pedido/```
+- ```GET http://localhost:8080/api/v1/pedido/```
+- ```GET http://localhost:8080/api/v1/pedido/```
+- ```GET http://localhost:8080/api/v1/pedido/```
+- 
+- ```GET http://localhost:8080/api/v1/cliente/```
+- ```PUT http://localhost:8080/api/v1/cliente/```
+- ```POST http://localhost:8080/api/v1/cliente/```
+- ```DELETE http://localhost:8080/api/v1/cliente/```
+- ```GET http://localhost:8080/api/v1/cliente/```
+- ```DELETE http://localhost:8080/api/v1/cliente/```
+- 
+- ```GET http://localhost:8080/swagger-ui/index.html``` Swagger
 ---
 ---
 ## Referências
-### Este projeto foi criado usando os seguintes pacotes Golang
-- [Gin](https://pkg.go.dev/github.com/gin-gonic/gin)
-- [GORM](https://pkg.go.dev/gorm.io/gorm)
-- [Logrus](https://pkg.go.dev/github.com/sirupsen/logrus)
-- [Testify](https://pkg.go.dev/github.com/stretchr/testify)
-- [Testing](https://pkg.go.dev/testing)
-- [SwagGo](https://pkg.go.dev/github.com/swaggo/swag)
-- [ValidatorV2](https://pkg.go.dev/gopkg.in/validator.v2@v2.0.1)
+### Este projeto foi criado usando os seguintes pacotes Java
+- [?](https://)
+- [?](https://)
+- [?](https://)
+- [?](https://)
+
+
 ---
 ---
 _fim do README.md_
