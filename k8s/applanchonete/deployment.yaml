@@ -24,8 +24,8 @@ spec:
           requests:
             memory: "256Mi"
             cpu: "200m"
-          envFrom:
-            - secretRef:
-                name: applanchonete-secret
-            - configMapRef:
-                name: applanchonete-configmap
+        envFrom:
+          - secretRef:
+              name: applanchonete-secret
+          - configMapRef:
+              name: applanchonete-configmap
