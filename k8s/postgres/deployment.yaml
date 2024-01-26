@@ -34,7 +34,7 @@ spec:
           requests:
             memory: "256Mi"
             cpu: "250m"
-  volumes:
-  - name: postgres-storage
-    persistentVolumeClaim:
-      claimName: postgres-pvc
+      volumes:
+      - name: postgres-storage
+        persistentVolumeClaim:
+          claimName: postgres-pvc
