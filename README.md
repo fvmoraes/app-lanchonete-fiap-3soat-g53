@@ -34,8 +34,8 @@
 - [Docker Compose](https://docs.docker.com/compose/install/)
 
 ### Como executar o projeto no meu computador?
-> Não é necessario criar databases, ou rodar o projeto de forma local, e sim apenas utilizando um docker-compose que existe neste repositorio.
->dentro do repositorio da aplicação, o comando inicial pode ser o seguinte:
+> Não é necessario criar databases, ou rodar o projeto de forma local, e sim apenas utilizar um docker-compose que existe neste repositorio.
+> Dentro do repositorio da aplicação, o comando inicial pode ser o seguinte:
 ```sh
 docker-compose up
 ``````
