@@ -93,11 +93,12 @@ docker start postgres_fiap_3soat_g53
 ---
 ## Referências
 ### Este projeto foi criado usando os seguintes pacotes Java
-- [?](https://)
-- [?](https://)
-- [?](https://)
-- [?](https://)
-
+- [spring boot starter data jpa](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa)
+- [spring boot starter web](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web)
+- [springdoc openapi starter webmvc ui](https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui)
+- [postgresql](https://mvnrepository.com/artifact/org.postgresql/postgresql)
+- [hibernate validator](https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator)
+- [spring boot](https://spring.io/projects/spring-boot/)
 
 ---
 ---
