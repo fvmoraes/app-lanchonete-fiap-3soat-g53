@@ -32,9 +32,14 @@ public class PedidoUseCasesImp implements PedidoUseCases {
 	}
 	
 	@Override
-	public Pedido buscaPedidoId(Integer id) {
-		return pedidoGateway.buscaPedidoId(id);
+	public Pedido buscaPedidoId(Integer id) throws PedidoNaoEncontradoException {
+		var pedido = pedidoGateway.buscaPedidoId(id);
+		if (pedido == null)
+			throw new PedidoNaoEncontradoException();
+
+		return pedido;
 	}
+	
 	@Override
 	public Pedido realizaPedido(Pedido pedido) throws PedidoComProdutoNaoCadastradoException {
 		if (pedido.nomeLanche() != null && produtoGateway.buscarPeloNome(pedido.nomeLanche()) == null) {

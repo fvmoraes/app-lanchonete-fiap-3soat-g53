@@ -40,13 +40,21 @@ public class PedidoController {
 	};
 
 	@GetMapping("{id}")
-	public PedidoResponse buscaPedidosPorId(@PathVariable Integer id) {
-		return mapper.paraResponse(pedidoUseCases.buscaPedidoId(id));
+	public ResponseEntity<PedidoResponse> buscaPedidosPorId(@PathVariable Integer id) {
+		try {
+			return new ResponseEntity<>( mapper.paraResponse(pedidoUseCases.buscaPedidoId(id)), HttpStatus.OK);
+		} catch (PedidoNaoEncontradoException e) {
+			return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+		}
 	};
 
 	@GetMapping("pagamento/{id}")
-	public PedidoPagamentoResponse buscaPedidosPagamento(@PathVariable Integer id) {
-		return mapper.paraResponseDTO(pedidoUseCases.buscaPedidoId(id));
+	public ResponseEntity<PedidoPagamentoResponse> buscaPedidosPagamento(@PathVariable Integer id) {
+		try {
+			return new ResponseEntity<>(mapper.paraResponseDTO(pedidoUseCases.buscaPedidoId(id)),HttpStatus.OK);
+		} catch (PedidoNaoEncontradoException e) {
+			return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+		}
 	};
 
 	@GetMapping("/status")
@@ -56,13 +64,13 @@ public class PedidoController {
 
 	// FAKE CHECKOUT
 	@PostMapping
-	public ResponseEntity<String> realizarPedido(@RequestBody PedidoRequest pedido) {
+	public ResponseEntity<PedidoResponse> realizarPedido(@RequestBody PedidoRequest pedido) {
 		try {
 			PedidoResponse response = mapper
 					.paraResponse(pedidoUseCases.realizaPedido(mapper.paraObjetoDominio(pedido)));
-			return new ResponseEntity<>(response.toString(), HttpStatus.ACCEPTED);
+			return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
 		} catch (PedidoComProdutoNaoCadastradoException e) {
-			return new ResponseEntity<>("Pedido Com Produto Nao Cadastrado", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
 	}
 

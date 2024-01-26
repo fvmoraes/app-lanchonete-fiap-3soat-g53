@@ -1,139 +1,14 @@
 {
 	"info": {
-		"_postman_id": "cc937272-6261-4aea-97d0-0182be81e85c",
+		"_postman_id": "71c82baf-6d29-406b-9bbc-8a2ae44bf57a",
 		"name": "FIAP",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "30818392"
+		"_exporter_id": "20971664"
 	},
 	"item": [
 		{
-			"name": "Produto",
-			"item": [
-				{
-					"name": "CadastraProduto1",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"categoria\": \"Lanche\",\r\n\t\"nome\":\"X-salada\",\r\n\t\"descricao\": \"x-salada, contem carne\",\r\n    \"valor\": \"18.25\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/api/v1/produto",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"v1",
-								"produto"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "CadastraProduto2",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n\r\n     \"categoria\": \"Bebida\",\r\n\t\r\n\t\"nome\":\"coca-cola_600ml\",\r\n\t\r\n\t\"descricao\": \"coca-cola_600ml\",\r\n\t\r\n    \"valor\": \"8.25\"\r\n    }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/api/v1/produto",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"v1",
-								"produto"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "BuscaProdutos",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/api/v1/produto",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"v1",
-								"produto"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "Cliente",
 			"item": [
-				{
-					"name": "DeletaCliente",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"cpf\":\"01234567891\",\r\n    \"nome\": \"clienteTeste3\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/api/v1/cliente/",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"v1",
-								"cliente",
-								""
-							]
-						}
-					},
-					"response": []
-				},
 				{
 					"name": "BuscaClienteCpf",
 					"request": {
@@ -205,6 +80,36 @@
 					"response": []
 				},
 				{
+					"name": "DeletaCliente",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cpf\":\"01234567891\",\r\n    \"nome\": \"clienteTeste3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/cliente/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"cliente",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "DeletaClienteCpf",
 					"request": {
 						"method": "DELETE",
@@ -224,6 +129,242 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "AtualizaCliente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cpf\":\"01234567891\",\r\n    \"nome\": \"clienteTeste3\",\r\n    \"email\": \"teste3@teste.com.br\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/cliente",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"cliente"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Produto",
+			"item": [
+				{
+					"name": "Adiciona Produto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoria\": \"Lanche\",\r\n\t\r\n\t\"nome\":\"X-salada\",\r\n\t\r\n\t\"descricao\": \"x-salada, contem carne\",\r\n\t\r\n    \"valor\": \"18.25\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/produto",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"produto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastra produto 2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoria\": \"Bebida\",\r\n    \"nome\":\"coca-cola_600ml\",\r\n    \"descricao\": \"coca-cola_600ml\",\r\n    \"valor\": \"8.25\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/produto",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"produto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuscaProdutos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/produto",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"produto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuscaProdutosCategoria",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/produto/Lanche",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"produto",
+								"Lanche"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deleta produto",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoria\": \"Bebida\",\r\n    \"nome\":\"coca-cola_600ml\",\r\n    \"descricao\": \"coca-cola_600ml\",\r\n    \"valor\": \"8.25\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/produto",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"produto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deleta produto por nome",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/produto/coca-cola_600ml",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"produto",
+								"coca-cola_600ml"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualiza Produto",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoria\": \"Bebida\",\r\n    \"nome\":\"coca-cola_600ml\",\r\n    \"descricao\": \"coca-cola_600ml\",\r\n    \"valor\": \"9.25\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/produto",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"produto"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -231,7 +372,7 @@
 			"name": "Pedido",
 			"item": [
 				{
-					"name": "BuscaPedidosOrdenados",
+					"name": "BuscaPedido ordenados",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -251,7 +392,7 @@
 					"response": []
 				},
 				{
-					"name": "BuscaPedidoPorID",
+					"name": "BuscaPedido por ID",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -301,7 +442,7 @@
 					"response": []
 				},
 				{
-					"name": "AtualizaPedidoStatusPronto",
+					"name": "AtualizaPedidoStatusPronto Trocar o 1 pelo Id do pedido",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -324,7 +465,7 @@
 					"response": []
 				},
 				{
-					"name": "AtualizaPedidoStatusFinalizado",
+					"name": "AtualizaPedidoStatusFinalizado Trocar o 1 pelo Id do pedido",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -347,7 +488,7 @@
 					"response": []
 				},
 				{
-					"name": "AtualizaPedidoStatusEmPreparacao",
+					"name": "Atualiza Pedido Status EmPreparacao",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -370,7 +511,7 @@
 					"response": []
 				},
 				{
-					"name": "AtualizaPedidoStatusRecebido",
+					"name": "Atualiza Pedido Status Recebido",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -393,7 +534,7 @@
 					"response": []
 				},
 				{
-					"name": "ConsultaStatusPagamento",
+					"name": "Consulta Status pagamento",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -415,7 +556,7 @@
 					"response": []
 				},
 				{
-					"name": "SimulaçãoMercadoPagoPgtoRealizadoSucesso",
+					"name": "Simulação webhook MercadoPago pagamento realizado Sucesso",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -439,7 +580,7 @@
 					"response": []
 				},
 				{
-					"name": "SimulaçãoMercadoPagoPagtoCancelado",
+					"name": "Simulação webhook MercadoPago pagamento Cancelado",
 					"request": {
 						"method": "POST",
 						"header": [],
