@@ -4,7 +4,6 @@
 ## Estrutura e tecnologias utilizadas
 ### Qual a proposta?
 >Este projeto é uma aplicação de pedidos para uma lanchonete, desenvolvida como parte do curso de pós graduação em Software Architeture da FIAP.
-.
 
 ### Tecnologias utilizadas:
 - [Java](https://dev.java/learn/)
@@ -15,7 +14,7 @@
 - [Swagger](https://swagger.io/solutions/api-documentation/)
 
 ### Informações Básicas:
-> Este projeto contém 7 endpoints de API, dos quais 6 estão diretamente vinculados a um processo CRUD em um banco de dados PostgreSQL.
+> Este projeto contém 21 endpoints de API, dos quais 20 estão diretamente vinculados a um processo CRUD em um banco de dados PostgreSQL.
 
 > Para interação básica, você pode usar o Swagger (via navegador) ou o Postman (importando a collection, o arquivo colectionPostman.txt que contém a configuração essencial para iniciar o uso).
 
