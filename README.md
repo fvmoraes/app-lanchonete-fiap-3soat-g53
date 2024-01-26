@@ -52,7 +52,8 @@ docker start postgres_fiap_3soat_g53
 - ``` 172.34.0.2 ``` é o endereço IP do banco de dados, acessível com as credenciais fiap:postgres:postgres na porta 5432.
 ### Exemplo de acesso ao PGAdmin:
 > [pgadmin/login](http://localhost:54321/login)
-![](/img/pgadmin.png)
+![](/img/pgadmin1.png)
+![](/img/pgadmin2.png)
 ### Exemplo de uso com o Swagger:
 > [/api/v1/swagger/index.html](http://localhost:8080/swagger-ui/index.html)
 ![](/img/swagger.png)
