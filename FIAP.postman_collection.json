@@ -10,13 +10,13 @@
 			"name": "Produto",
 			"item": [
 				{
-					"name": "Adiciona Produto",
+					"name": "CadastraProduto1",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"categoria\": \"Lanche\",\r\n\t\r\n\t\"nome\":\"X-salada\",\r\n\t\r\n\t\"descricao\": \"x-salada, contem carne\",\r\n\t\r\n    \"valor\": \"18.25\"\r\n}",
+							"raw": "{\r\n    \"categoria\": \"Lanche\",\r\n\t\"nome\":\"X-salada\",\r\n\t\"descricao\": \"x-salada, contem carne\",\r\n    \"valor\": \"18.25\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -39,7 +39,7 @@
 					"response": []
 				},
 				{
-					"name": "Cadastra produto 2",
+					"name": "CadastraProduto2",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -231,7 +231,7 @@
 			"name": "Pedido",
 			"item": [
 				{
-					"name": "BuscaPedido ordenados",
+					"name": "BuscaPedidosOrdenados",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -251,7 +251,7 @@
 					"response": []
 				},
 				{
-					"name": "BuscaPedido por ID",
+					"name": "BuscaPedidoPorID",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -301,7 +301,7 @@
 					"response": []
 				},
 				{
-					"name": "AtualizaPedidoStatusPronto Trocar o 1 pelo Id do pedido",
+					"name": "AtualizaPedidoStatusPronto",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -324,7 +324,7 @@
 					"response": []
 				},
 				{
-					"name": "AtualizaPedidoStatusFinalizado Trocar o 1 pelo Id do pedido",
+					"name": "AtualizaPedidoStatusFinalizado",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -347,7 +347,7 @@
 					"response": []
 				},
 				{
-					"name": "Atualiza Pedido Status EmPreparacao",
+					"name": "AtualizaPedidoStatusEmPreparacao",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -370,7 +370,7 @@
 					"response": []
 				},
 				{
-					"name": "Atualiza Pedido Status Recebido",
+					"name": "AtualizaPedidoStatusRecebido",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -393,7 +393,7 @@
 					"response": []
 				},
 				{
-					"name": "Consulta Status pagamento",
+					"name": "ConsultaStatusPagamento",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -415,7 +415,7 @@
 					"response": []
 				},
 				{
-					"name": "Simulação webhook MercadoPago pagamento realizado Sucesso",
+					"name": "SimulaçãoMercadoPagoPgtoRealizadoSucesso",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -439,7 +439,7 @@
 					"response": []
 				},
 				{
-					"name": "Simulação webhook MercadoPago pagamento Cancelado",
+					"name": "SimulaçãoMercadoPagoPagtoCancelado",
 					"request": {
 						"method": "POST",
 						"header": [],
