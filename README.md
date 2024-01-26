@@ -67,28 +67,28 @@ docker start postgres_fiap_3soat_g53
 ---
 ## Mais informações sobre a API
 ### Lista de endpoints
-- ```GET http://localhost:8080/api/v1/produto/```
-- ```PUT http://localhost:8080/api/v1/produto/```
-- ```POST http://localhost:8080/api/v1/produto/```
-- ```DELETE http://localhost:8080/api/v1/produto/```
+- ```GET http://localhost:8080/api/v1/produto```
+- ```PUT http://localhost:8080/api/v1/produto```
+- ```POST http://localhost:8080/api/v1/produto```
+- ```DELETE http://localhost:8080/api/v1/produto```
 - ```GET http://localhost:8080/api/v1/produto/{categoria}```
 - ```DELETE http://localhost:8080/api/v1/produto/{nome}```
-- 
-- ```GET http://localhost:8080/api/v1/pedido/```
-- ```PUT http://localhost:8080/api/v1/pedido/```
-- ```POST http://localhost:8080/api/v1/pedido/```
-- ```PUT http://localhost:8080/api/v1/pedido/```
-- ```POST http://localhost:8080/api/v1/pedido/```
-- ```GET http://localhost:8080/api/v1/pedido/```
-- ```GET http://localhost:8080/api/v1/pedido/```
-- ```GET http://localhost:8080/api/v1/pedido/```
-- 
-- ```GET http://localhost:8080/api/v1/cliente/```
-- ```PUT http://localhost:8080/api/v1/cliente/```
-- ```POST http://localhost:8080/api/v1/cliente/```
-- ```DELETE http://localhost:8080/api/v1/cliente/```
-- ```GET http://localhost:8080/api/v1/cliente/```
-- ```DELETE http://localhost:8080/api/v1/cliente/```
+
+- ```GET http://localhost:8080/api/v1/pedido```
+- ```PUT http://localhost:8080/api/v1/pedido```
+- ```POST http://localhost:8080/api/v1/pedido```
+- ```PUT http://localhost:8080/api/v1/pedido/status/{id}/{statusRequest}```
+- ```POST http://localhost:8080/api/v1/pedido/pagamento/mercadopago/{topic}/{id}```
+- ```GET http://localhost:8080/api/v1/pedido/{id}```
+- ```GET http://localhost:8080/api/v1/pedido/status```
+- ```GET http://localhost:8080/api/v1/pedido/pagamento/{id}```
+
+- ```GET http://localhost:8080/api/v1/cliente```
+- ```PUT http://localhost:8080/api/v1/cliente```
+- ```POST http://localhost:8080/api/v1/cliente```
+- ```DELETE http://localhost:8080/api/v1/cliente```
+- ```GET http://localhost:8080/api/v1/cliente/{cpf}```
+- ```DELETE http://localhost:8080/api/v1/cliente/{cpf}```
 - 
 - ```GET http://localhost:8080/swagger-ui/index.html``` Swagger
 ---
