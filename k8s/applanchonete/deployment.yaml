@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: applanchonete
-        image: fvmoraes/applanchonetetok8s:latest
+        image: fvmoraes/applanchonetetok8s
         ports:
         - containerPort: 8080
         resources:
