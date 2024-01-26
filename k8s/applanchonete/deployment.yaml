@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: applanchonete-deployment
+  name: applanchonete
 spec:
   replicas: 1
   selector:
@@ -24,3 +24,8 @@ spec:
           requests:
             memory: "256Mi"
             cpu: "200m"
+          envFrom:
+            - secretRef:
+                name: applanchonete-secret
+            - configMapRef:
+                name: applanchonete-configmap

@@ -10,3 +10,18 @@ resources:
 commonLabels:
   app.kubernetes.io/name: postgres
   app.kubernetes.io/managed-by: 3soatg53
+
+secretGenerator:
+- name: postgres-secret
+  type: Opaque
+  literals:
+  - POSTGRES_PASSWORD=postgres
+
+configMapGenerator:
+- name: postgres-configmap
+  literals:
+  - POSTGRES_USER=postgres
+  - POSTGRES_DB=fiap
+
+generatorOptions:
+  disableNameSuffixHash: false

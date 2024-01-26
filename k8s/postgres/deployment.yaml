@@ -15,13 +15,11 @@ spec:
       containers:
       - name: postgres
         image: postgres:15.5-alpine
-        env:
-        - name: POSTGRES_USER
-          value: postgres
-        - name: POSTGRES_PASSWORD
-          value: postgres
-        - name: POSTGRES_DB
-          value: fiap
+        envFrom:
+          - secretRef:
+              name: postgres-secret
+          - configMapRef:
+              name: postgres-configmap
         ports:
         - containerPort: 5432
         volumeMounts:

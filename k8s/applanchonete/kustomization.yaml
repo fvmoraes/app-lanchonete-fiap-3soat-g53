@@ -9,3 +9,17 @@ resources:
 commonLabels:
   app.kubernetes.io/name: applanchonete
   app.kubernetes.io/managed-by: 3soatg53
+
+secretGenerator:
+- name: applanchonete-secret
+  type: Opaque
+  literals:
+  - FOR_FUTURE_USE=abc123
+
+configMapGenerator:
+- name: applanchonete-configmap
+  literals:
+  - CONNECTION_STRING=jdbc:postgresql://172.34.0.2:5432/fiap
+
+generatorOptions:
+  disableNameSuffixHash: false
