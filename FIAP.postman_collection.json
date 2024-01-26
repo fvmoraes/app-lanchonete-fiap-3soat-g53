@@ -556,7 +556,7 @@
 					"response": []
 				},
 				{
-					"name": "Simulação webhook MercadoPago pagamento realizado Sucesso",
+					"name": "Simulação MercadoPago pagamento realizado Sucesso",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -580,7 +580,7 @@
 					"response": []
 				},
 				{
-					"name": "Simulação webhook MercadoPago pagamento Cancelado",
+					"name": "Simulação MercadoPago pagamento Cancelado",
 					"request": {
 						"method": "POST",
 						"header": [],
