@@ -7,6 +7,6 @@ spec:
     app: applanchonete
   ports:
     - protocol: TCP
-      port: 80
+      port: 8080
       targetPort: 8080
-  type: LoadBalancer  # Altere para ClusterIP, NodePort ou LoadBalancer conforme necessário
+  type: LoadBalancer
