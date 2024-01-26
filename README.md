@@ -2,7 +2,7 @@
 ---
 ---
 ## Estrutura e tecnologias utilizadas
-### qual a proposta?
+### Qual a proposta?
 >Este projeto é uma aplicação de pedidos para uma lanchonete, desenvolvida como parte do curso de pós graduação em Software Architeture da FIAP.
 .
 
