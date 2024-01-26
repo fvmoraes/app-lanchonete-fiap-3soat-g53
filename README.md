@@ -51,11 +51,11 @@ docker start postgres_fiap_3soat_g53
 - ``` http://localhost:54321/login``` concede acesso ao PGAdmin que já possui a configuração com o banco de dados. Use para fazer login no pgadmin: "3soatg53@fiap.com" e "3soatg53" e, para confirmação de acesso ao banco de dados, a senha é "postgres".
 - ``` 172.34.0.2 ``` é o endereço IP do banco de dados, acessível com as credenciais fiap:postgres:postgres na porta 5432.
 ### Exemplo de acesso ao PGAdmin:
-> [pgadmin/login](http://localhost:54321/login)
+> O Pgadmin já está configurado para acesso, utilize o endereço: [pgadmin/login](http://localhost:54321/login)
 ![](/img/pgadmin1.png)
 ![](/img/pgadmin2.png)
 ### Exemplo de uso com o Swagger:
-> [/api/v1/swagger/index.html](http://localhost:8080/swagger-ui/index.html)
+> O Swagger possui os endpoints disponiveis na API, utilize o endereço: [swagger/index.html](http://localhost:8080/swagger-ui/index.html)
 ![](/img/swagger.png)
 ### Exemplo de uso com o Postman:
 > No menu suspenso Nome do Workspace, selecione Importar. Escolha uma opção para encontrar o arquivo e importe o arquivo "FIAP.postman_collection.json".
