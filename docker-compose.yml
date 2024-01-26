@@ -2,7 +2,7 @@ version: '3'
 services:
 #postgres
   postgres:
-    image: "postgres"
+    image: "postgres:15.5-alpine"
     container_name: postgres_fiap_3soat_g53
     environment:
       - POSTGRES_USER=postgres
