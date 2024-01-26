@@ -16,7 +16,7 @@
 ### Informações Básicas:
 > Este projeto contém 21 endpoints de API, dos quais 20 estão diretamente vinculados a um processo CRUD em um banco de dados PostgreSQL.
 
-> Para interação básica, você pode usar o Swagger (via navegador) ou o Postman (importando a collection, o arquivo colectionPostman.txt que contém a configuração essencial para iniciar o uso).
+> Para interação básica, você pode usar o Swagger (via navegador) ou o Postman (importando a collection, o arquivo FIAP.postman_collection.json que contém a configuração essencial para iniciar o uso).
 
 > O banco de dados PostgreSQL e o pgAdmin já estão configurados e prontos para uso.
 
@@ -47,7 +47,7 @@ docker start postgres_fiap_3soat_g53
 ### Como acessar as funcionalidades disponíveis?
 > Os seguintes endereços privados são fixos na configuração do Docker-Compose e proporcionam acesso às opções do projeto:
 
-- ``` http://localhost:8080/``` concede acesso à API(/api/v1/*) e ao endpoint do Swagger.
+- ``` http://localhost:8080/``` concede acesso à API (/api/v1/*) e ao endpoint do Swagger.
 - ``` http://localhost:54321/login``` concede acesso ao PGAdmin que já possui a configuração com o banco de dados. Use para fazer login no pgadmin: "3soatg53@fiap.com" e "3soatg53" e, para confirmação de acesso ao banco de dados, a senha é "postgres".
 - ``` 172.34.0.2 ``` é o endereço IP do banco de dados, acessível com as credenciais fiap:postgres:postgres na porta 5432.
 ### Exemplo de acesso ao PGAdmin:
@@ -57,7 +57,7 @@ docker start postgres_fiap_3soat_g53
 > [/api/v1/swagger/index.html](http://localhost:8080/swagger-ui/index.html)
 ![](/img/swagger.png)
 ### Exemplo de uso com o Postman:
-> No menu suspenso Nome do Workspace, selecione Importar. Escolha uma opção para encontrar o arquivo e importe o arquivo "colectionPostman.txt".
+> No menu suspenso Nome do Workspace, selecione Importar. Escolha uma opção para encontrar o arquivo e importe o arquivo "FIAP.postman_collection.json".
 > Para mais informações: [Documentação do Insomnia](https://docs.insomnia.rest/insomnia/import-export-data)
 ![](/img/insomnia.png)
 
