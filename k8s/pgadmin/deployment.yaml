@@ -29,3 +29,11 @@ spec:
           requests:
             memory: "256Mi"
             cpu: "250m"
+        volumeMounts:
+        - name: servers-json-volume
+          mountPath: /pgadmin4/servers.json
+          subPath: servers.json
+      volumes:
+      - name: servers-json-volume
+        configMap:
+          name: pgadmin-configmap

@@ -19,6 +19,8 @@ configMapGenerator:
 - name: pgadmin-configmap
   literals:
   - PGADMIN_DEFAULT_EMAIL=3soatg53@fiap.com
+  files:
+  - configs/servers.json
 
 generatorOptions:
   disableNameSuffixHash: false
