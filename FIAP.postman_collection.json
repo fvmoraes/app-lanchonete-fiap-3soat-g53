@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "71c82baf-6d29-406b-9bbc-8a2ae44bf57a",
+		"_postman_id": "4358c509-5c7e-4f39-b479-fd14d28fdc1b",
 		"name": "FIAP",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "20971664"
+		"_exporter_id": "30818392"
 	},
 	"item": [
 		{
@@ -165,13 +165,13 @@
 			"name": "Produto",
 			"item": [
 				{
-					"name": "Adiciona Produto",
+					"name": "CadastraProduto1",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"categoria\": \"Lanche\",\r\n\t\r\n\t\"nome\":\"X-salada\",\r\n\t\r\n\t\"descricao\": \"x-salada, contem carne\",\r\n\t\r\n    \"valor\": \"18.25\"\r\n}",
+							"raw": "{\r\n    \"categoria\": \"Lanche\",\r\n\t\"nome\":\"X-salada\",\r\n\t\"descricao\": \"x-salada, contem carne\",\r\n    \"valor\": \"18.25\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -194,7 +194,7 @@
 					"response": []
 				},
 				{
-					"name": "Cadastra produto 2",
+					"name": "CadastraProduto2",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -288,7 +288,7 @@
 					"response": []
 				},
 				{
-					"name": "Deleta produto",
+					"name": "DeletaProduto",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -317,7 +317,7 @@
 					"response": []
 				},
 				{
-					"name": "Deleta produto por nome",
+					"name": "DeletaProdutoPorNome",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -338,7 +338,7 @@
 					"response": []
 				},
 				{
-					"name": "Atualiza Produto",
+					"name": "AtualizaProduto",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -372,7 +372,7 @@
 			"name": "Pedido",
 			"item": [
 				{
-					"name": "BuscaPedido ordenados",
+					"name": "BuscaPedidoOrdenados",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -392,7 +392,7 @@
 					"response": []
 				},
 				{
-					"name": "BuscaPedido por ID",
+					"name": "BuscaPedidoPorID",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -442,7 +442,7 @@
 					"response": []
 				},
 				{
-					"name": "AtualizaPedidoStatusPronto Trocar o 1 pelo Id do pedido",
+					"name": "AtualizaPedidoStatusPronto",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -465,7 +465,7 @@
 					"response": []
 				},
 				{
-					"name": "AtualizaPedidoStatusFinalizado Trocar o 1 pelo Id do pedido",
+					"name": "AtualizaPedidoStatusFinalizado",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -488,7 +488,7 @@
 					"response": []
 				},
 				{
-					"name": "Atualiza Pedido Status EmPreparacao",
+					"name": "AtualizaPedidoStatusEmPreparacao",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -511,7 +511,7 @@
 					"response": []
 				},
 				{
-					"name": "Atualiza Pedido Status Recebido",
+					"name": "AtualizaPedidoStatusRecebido",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -534,7 +534,7 @@
 					"response": []
 				},
 				{
-					"name": "Consulta Status pagamento",
+					"name": "ConsultaStatusPagamento",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -556,7 +556,7 @@
 					"response": []
 				},
 				{
-					"name": "Simulação MercadoPago pagamento realizado Sucesso",
+					"name": "SimulaçãoMercadoPagoPgtoRealizadoSucesso",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -580,7 +580,7 @@
 					"response": []
 				},
 				{
-					"name": "Simulação MercadoPago pagamento Cancelado",
+					"name": "SimulaçãoMercadoPagoPagtoCancelado",
 					"request": {
 						"method": "POST",
 						"header": [],
