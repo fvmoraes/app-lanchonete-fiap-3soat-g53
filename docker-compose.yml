@@ -2,12 +2,12 @@ version: '3'
 services:
 #postgres
   postgres:
-    image: "postgres"
+    image: "postgres:15.5-alpine"
     container_name: postgres_fiap_3soat_g53
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=fiap
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: fiap
     ports:
       - "5432:5432"
     networks:
@@ -39,6 +39,8 @@ services:
       dockerfile: docker/Dockerfile
     image: applanchonete
     container_name: applanchonete_fiap_3soat_g53
+    environment:
+      CONNECTION_STRING: jdbc:postgresql://172.34.0.2:5432/fiap
     restart: unless-stopped
     tty: true
     ports:

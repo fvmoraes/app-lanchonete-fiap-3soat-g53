@@ -34,6 +34,7 @@ public class ProdutoController {
 		this.produtoUseCases = produtoUseCases;
 		this.mapper = mapper;
 	}
+	
 	@GetMapping
 	public ResponseEntity<List<ProdutoResponse>> buscarProdutos() {
 		return new ResponseEntity<>(produtoUseCases.buscarProdutos().stream().map(mapper::paraResponse).toList(), HttpStatus.ACCEPTED);
@@ -54,6 +55,7 @@ public class ProdutoController {
 			return new ResponseEntity<>("Produto já cadastrado", HttpStatus.CONFLICT);
 		}
 	}
+	
 	@PutMapping
 	public ResponseEntity<String> atualizaProduto(@RequestBody ProdutoRequest produtoRequest) {
 		try {
@@ -71,6 +73,7 @@ public class ProdutoController {
 		return new ResponseEntity<>(PRODUTO_DELETADO, HttpStatus.OK);
 
 	}
+	
 	@DeleteMapping("{nome}")
 	public ResponseEntity<String> deletaProdutoNome(@PathVariable String nome) {
 		produtoUseCases.deletaProduto(nome);

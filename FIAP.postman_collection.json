@@ -1,0 +1,609 @@
+{
+	"info": {
+		"_postman_id": "4358c509-5c7e-4f39-b479-fd14d28fdc1b",
+		"name": "FIAP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30818392"
+	},
+	"item": [
+		{
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "BuscaClienteCpf",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/cliente/01234567891",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"cliente",
+								"01234567891"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuscaClientes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/cliente",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"cliente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CadastraCliente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cpf\":\"01234567891\",\r\n    \"nome\": \"clienteTeste3\",\r\n    \"email\": \"teste@teste.com.br\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/cliente",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"cliente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeletaCliente",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cpf\":\"01234567891\",\r\n    \"nome\": \"clienteTeste3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/cliente/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"cliente",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeletaClienteCpf",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/cliente/01234567891",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"cliente",
+								"01234567891"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AtualizaCliente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cpf\":\"01234567891\",\r\n    \"nome\": \"clienteTeste3\",\r\n    \"email\": \"teste3@teste.com.br\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/cliente",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"cliente"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Produto",
+			"item": [
+				{
+					"name": "CadastraProduto1",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoria\": \"Lanche\",\r\n\t\"nome\":\"X-salada\",\r\n\t\"descricao\": \"x-salada, contem carne\",\r\n    \"valor\": \"18.25\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/produto",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"produto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CadastraProduto2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoria\": \"Bebida\",\r\n    \"nome\":\"coca-cola_600ml\",\r\n    \"descricao\": \"coca-cola_600ml\",\r\n    \"valor\": \"8.25\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/produto",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"produto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuscaProdutos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/produto",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"produto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuscaProdutosCategoria",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/produto/Lanche",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"produto",
+								"Lanche"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeletaProduto",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoria\": \"Bebida\",\r\n    \"nome\":\"coca-cola_600ml\",\r\n    \"descricao\": \"coca-cola_600ml\",\r\n    \"valor\": \"8.25\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/produto",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"produto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeletaProdutoPorNome",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/produto/coca-cola_600ml",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"produto",
+								"coca-cola_600ml"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AtualizaProduto",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoria\": \"Bebida\",\r\n    \"nome\":\"coca-cola_600ml\",\r\n    \"descricao\": \"coca-cola_600ml\",\r\n    \"valor\": \"9.25\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/produto",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"produto"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pedido",
+			"item": [
+				{
+					"name": "BuscaPedidoOrdenados",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/pedido",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"pedido"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuscaPedidoPorID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/pedido/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"pedido",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RealizarPedido",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"nomeLanche\": \"X-salada\",\r\n\"nomeBebida\": \"coca-cola_600ml\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/pedido",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"pedido"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AtualizaPedidoStatusPronto",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/pedido/status/1/Pronto",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"pedido",
+								"status",
+								"1",
+								"Pronto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AtualizaPedidoStatusFinalizado",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/pedido/status/1/Finalizado",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"pedido",
+								"status",
+								"1",
+								"Finalizado"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AtualizaPedidoStatusEmPreparacao",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/pedido/status/1/EmPreparacao",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"pedido",
+								"status",
+								"1",
+								"EmPreparacao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AtualizaPedidoStatusRecebido",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/pedido/status/1/Recebido",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"pedido",
+								"status",
+								"1",
+								"Recebido"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ConsultaStatusPagamento",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/pedido/pagamento/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"pedido",
+								"pagamento",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SimulaçãoMercadoPagoPgtoRealizadoSucesso",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/pedido/pagamento/mercadopago/payment/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"pedido",
+								"pagamento",
+								"mercadopago",
+								"payment",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SimulaçãoMercadoPagoPagtoCancelado",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/pedido/pagamento/mercadopago/chargebacks/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"pedido",
+								"pagamento",
+								"mercadopago",
+								"chargebacks",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

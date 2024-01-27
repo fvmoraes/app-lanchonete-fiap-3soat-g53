@@ -1,0 +1,25 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- deployment.yaml
+- hpa.yaml
+- service.yaml
+
+commonLabels:
+  app.kubernetes.io/name: applanchonete
+  app.kubernetes.io/managed-by: 3soatg53
+
+secretGenerator:
+- name: applanchonete-secret
+  type: Opaque
+  literals:
+  - FOR_FUTURE_USE=abc123
+
+configMapGenerator:
+- name: applanchonete-configmap
+  literals:
+  - CONNECTION_STRING=jdbc:postgresql://postgres-service.3soatg53.svc.cluster.local:5432/fiap
+
+generatorOptions:
+  disableNameSuffixHash: false

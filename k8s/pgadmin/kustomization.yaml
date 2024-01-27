@@ -1,0 +1,26 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- deployment.yaml
+- service.yaml
+
+commonLabels:
+  app.kubernetes.io/name: pgadmin
+  app.kubernetes.io/managed-by: 3soatg53
+
+secretGenerator:
+- name: pgadmin-secret
+  type: Opaque
+  literals:
+  - PGADMIN_DEFAULT_PASSWORD=3soatg53
+
+configMapGenerator:
+- name: pgadmin-configmap
+  literals:
+  - PGADMIN_DEFAULT_EMAIL=3soatg53@fiap.com
+  files:
+  - configs/servers.json
+
+generatorOptions:
+  disableNameSuffixHash: false

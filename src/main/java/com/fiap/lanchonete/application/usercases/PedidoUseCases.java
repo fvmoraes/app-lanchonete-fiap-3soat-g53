@@ -11,7 +11,7 @@ public interface PedidoUseCases {
 
 	public List<Pedido> buscaPedidos();
 	public List<Pedido> buscaPedidosPorStatus(StatusPedido status);
-	public Pedido buscaPedidoId(Integer id);
+	public Pedido buscaPedidoId(Integer id) throws PedidoNaoEncontradoException;
 	public Pedido realizaPedido(Pedido pedido) throws PedidoComProdutoNaoCadastradoException;
 	public void atualizaPedido(Pedido pedido) throws PedidoNaoEncontradoException;
 	public void atualizaPedidoStatus(Integer id, StatusPedido status) throws PedidoNaoEncontradoException;

@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pgadmin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pgadmin
+  template:
+    metadata:
+      labels:
+        app: pgadmin
+    spec:
+      containers:
+      - name: pgadmin
+        image: dpage/pgadmin4
+        envFrom:
+          - secretRef:
+              name: pgadmin-secret
+          - configMapRef:
+              name: pgadmin-configmap
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+        volumeMounts:
+        - name: servers-json-volume
+          mountPath: /pgadmin4/servers.json
+          subPath: servers.json
+      volumes:
+      - name: servers-json-volume
+        configMap:
+          name: pgadmin-configmap

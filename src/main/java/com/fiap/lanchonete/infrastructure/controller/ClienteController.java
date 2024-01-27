@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fiap.lanchonete.application.usercases.ClienteUseCases;
-import com.fiap.lanchonete.application.usercases.ClienteUseCasesImp;
 import com.fiap.lanchonete.application.usercases.exceptions.ClientJaCadastradoException;
 import com.fiap.lanchonete.application.usercases.exceptions.ClientNaoEncontradoException;
 import com.fiap.lanchonete.infrastructure.controller.mapper.ClienteRequestMapper;
