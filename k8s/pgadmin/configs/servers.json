@@ -1,8 +1,8 @@
 {
   "Servers": {
     "1": {
-      "Name": "pgadmin",
-      "Group": "pgadmin",
+      "Name": "applanchonete_pgadmin",
+      "Group": "Servers",
       "Host": "postgres-service.3soatg53.svc.cluster.local",
       "Port": 5432,
       "MaintenanceDB": "fiap",
