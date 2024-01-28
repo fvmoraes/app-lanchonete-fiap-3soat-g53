@@ -65,6 +65,13 @@ docker start postgres_fiap_3soat_g53
 
 ---
 ---
+## Arquitetura
+### Kubernetes
+Segue a arquitetura atual desenvolvida com o Kubernetes.
+![](/img/kubernetes.png)
+
+---
+---
 ## Mais informações sobre a API
 ### Lista de endpoints
 > Produto

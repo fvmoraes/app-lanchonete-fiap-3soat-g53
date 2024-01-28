@@ -4,8 +4,8 @@ metadata:
   name: postgres-pv
 spec:
   capacity:
-    storage: 1Gi  # Altere conforme necessário
+    storage: 1Gi
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/path/to/host/postgres/data"  # Altere para o caminho desejado no host
+    path: "/build/volumes/postgres_data:/var/lib/postgresql/data"
