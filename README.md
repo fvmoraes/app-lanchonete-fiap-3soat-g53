@@ -67,9 +67,11 @@ docker start postgres_fiap_3soat_g53
 ---
 ## Arquitetura
 ### Kubernetes
-Segue a arquitetura atual desenvolvida com o Kubernetes.
+> Segue a arquitetura atual desenvolvida com o Kubernetes.
 ![](/img/kubernetes.png)
 
+> Mais informações neste video do youtube aonde explicamos a arquitetura:
+![](<iframe width="1189" height="743" src="https://www.youtube.com/embed/E8MHnRbv1Y8" title="FIAP - 3SOAT - G53 - Fase 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>)
 ---
 ---
 ## Mais informações sobre a API
