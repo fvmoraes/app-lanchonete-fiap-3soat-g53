@@ -70,8 +70,9 @@ docker start postgres_fiap_3soat_g53
 > Segue a arquitetura atual desenvolvida com o Kubernetes.
 ![](/img/kubernetes.png)
 
-> Mais informações neste video do youtube aonde explicamos a arquitetura:
-![](https://www.youtube.com/watch?v=E8MHnRbv1Y8)
+> Neste vídeo do youtube explicamos mais sobre a arquitetura:
+[![Assista ao vídeo](/img/youtube.png)](https://www.youtube.com/watch?v=E8MHnRbv1Y8)
+
 ---
 ---
 ## Mais informações sobre a API
