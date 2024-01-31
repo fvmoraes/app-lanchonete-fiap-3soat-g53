@@ -32,10 +32,13 @@
 
 - [Docker](https://docs.docker.com/get-started/)
 - [Docker Compose](https://docs.docker.com/compose/install/)
+- [Kubenetes](https://kubernetes.io/pt-br/docs/setup/)
+- [MiniKube](https://minikube.sigs.k8s.io/docs/start/)
+- [Lens](https://k8slens.dev/)
 
 ### Como executar o projeto no meu computador?
 > Não é necessario criar databases, ou rodar o projeto de forma local, e sim apenas utilizar um docker-compose que existe neste repositorio.
-> Dentro do repositorio da aplicação, o comando inicial pode ser o seguinte:
+> Dentro do repositorio da aplicação, o comando inicial pode ser o seguinte para uso com Docker Compose:
 ```sh
 docker-compose up
 ``````
@@ -43,6 +46,10 @@ docker-compose up
 ```sh
 docker start postgres_fiap_3soat_g53
 ```
+> Criamos também dois scripts que sobem a arquitetura com Kubernetes, através do MiniKube, para tal execute:
+```sh
+./k8s.sh && ./pt-fwd.sh
+``````
 > Valide se a imagem de postgres utilizada foi a "postgres:15.5-alpine", caso não tenha sido esta, elimine as imagens de container diferentes e aplique novamente os comandos acima.
 
 ### Como acessar as funcionalidades disponíveis?
