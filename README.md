@@ -56,6 +56,12 @@ docker start postgres_fiap_3soat_g53
 ```sh
 ./pt-fwd.sh
 ``````
+> Resultado esperado utilizando Docker-Compose:
+![](/img/withdc.png)
+
+> Resultado esperado utilizando Kustomize do Kubernetes:
+![](/img/withk8s.png)
+
 > Valide se a imagem de postgres utilizada foi a "postgres:15.5-alpine", caso não tenha sido esta, elimine as imagens de container diferentes e aplique novamente os comandos acima.
 
 ### Como acessar as funcionalidades disponíveis?
