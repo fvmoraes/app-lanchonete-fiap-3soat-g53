@@ -50,7 +50,11 @@ docker start postgres_fiap_3soat_g53
 ```
 > Criamos também dois scripts que sobem a arquitetura com Kubernetes, através do MiniKube, para tal execute:
 ```sh
-./k8s.sh && ./pt-fwd.sh
+./k8s.sh
+``````
+> Após validar o "UP" dos PODs Kubernetes, utilize o seguinte script para fazer Port Forward:
+```sh
+./pt-fwd.sh
 ``````
 > Valide se a imagem de postgres utilizada foi a "postgres:15.5-alpine", caso não tenha sido esta, elimine as imagens de container diferentes e aplique novamente os comandos acima.
 
