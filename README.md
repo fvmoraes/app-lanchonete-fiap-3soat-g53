@@ -26,9 +26,9 @@
 ---
 ## Como Usar
 ### O que preciso ter instalado no meu computador?
-> Docker e Docker Compose instalados na sua máquina
-
 > Qualquer sistema operacional Linux ou subsistema Linux, Windows ou MacOs
+> Docker e Docker Compose instalados na sua máquina
+> Kubernetes, Minikube e Lens instalados na sua máquina
 
 - [Docker](https://docs.docker.com/get-started/)
 - [Docker Compose](https://docs.docker.com/compose/install/)
