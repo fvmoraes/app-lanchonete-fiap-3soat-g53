@@ -69,7 +69,7 @@ public class ProdutoController {
 
 	@DeleteMapping
 	public ResponseEntity<String> deletaProduto(@RequestBody ProdutoRequest produtoRequest) {
-		produtoUseCases.deletaProduto(produtoRequest.nome());
+		produtoUseCases.deletaProduto(produtoRequest.getNome());
 		return new ResponseEntity<>(PRODUTO_DELETADO, HttpStatus.OK);
 
 	}

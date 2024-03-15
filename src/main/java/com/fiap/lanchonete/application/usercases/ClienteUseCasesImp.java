@@ -24,7 +24,7 @@ public class ClienteUseCasesImp implements ClienteUseCases{
 	
 	@Override
 	public Cliente criaCliente(Cliente cliente) throws ClientJaCadastradoException {
-		if (clienteGateway.buscaClientes(cliente.cpf()) != null) {
+		if (clienteGateway.buscaClientes(cliente.getCpf()) != null) {
 			throw new ClientJaCadastradoException();
 		}
 		
@@ -51,7 +51,7 @@ public class ClienteUseCasesImp implements ClienteUseCases{
 
 	@Override
 	public void atualizaCliente(Cliente cliente) throws ClientNaoEncontradoException {
-		if (clienteGateway.buscaClientes(cliente.cpf()) == null)
+		if (clienteGateway.buscaClientes(cliente.getCpf()) == null)
 			throw new ClientNaoEncontradoException();
 		clienteGateway.atualiziaCliente(cliente);
 		

@@ -1,10 +1,15 @@
-package com.fiap.lanchonete.domain.entity;
+package com.fiap.lanchonete.infrastructure.controller.requestsdto;
 
-public class Cliente {
+public class ClienteRequest {
 	String cpf;
 	String nome;
 	String email;
-	
+	public ClienteRequest(String cpf, String nome, String email) {
+		super();
+		this.cpf = cpf;
+		this.nome = nome;
+		this.email = email;
+	}
 	public String getCpf() {
 		return cpf;
 	}
@@ -21,12 +26,6 @@ public class Cliente {
 		return email;
 	}
 	public void setEmail(String email) {
-		this.email = email;
-	}
-	public Cliente(String cpf, String nome, String email) {
-		super();
-		this.cpf = cpf;
-		this.nome = nome;
 		this.email = email;
 	}
 	

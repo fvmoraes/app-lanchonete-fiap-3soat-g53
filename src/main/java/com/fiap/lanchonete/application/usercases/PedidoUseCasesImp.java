@@ -42,36 +42,27 @@ public class PedidoUseCasesImp implements PedidoUseCases {
 	
 	@Override
 	public Pedido realizaPedido(Pedido pedido) throws PedidoComProdutoNaoCadastradoException {
-		if (pedido.nomeLanche() != null && produtoGateway.buscarPeloNome(pedido.nomeLanche()) == null) {
-			throw new PedidoComProdutoNaoCadastradoException();
-		}
-		if (pedido.nomeBebida() != null && produtoGateway.buscarPeloNome(pedido.nomeBebida()) == null) {
-			throw new PedidoComProdutoNaoCadastradoException();
-		}
-		if (pedido.nomeAcompanhamento() != null && produtoGateway.buscarPeloNome(pedido.nomeAcompanhamento()) == null) {
-			throw new PedidoComProdutoNaoCadastradoException();
-
-		}
-		if (pedido.nomeSobremesa() != null && produtoGateway.buscarPeloNome(pedido.nomeSobremesa()) == null) {
-			throw new PedidoComProdutoNaoCadastradoException();
-		}
-
-		Pedido pedidoParaCriar = new Pedido(pedido.idPedido(), pedido.nomeLanche(), pedido.nomeAcompanhamento(),
-				pedido.nomeBebida(), pedido.nomeSobremesa(), StatusPedido.Recebido,
+		
+		 if (pedido.getListaProdutos().stream()
+		            .anyMatch(produto -> produtoGateway.buscarPeloNome(produto) == null)) {
+		        throw new PedidoComProdutoNaoCadastradoException();
+		    }
+		
+		Pedido pedidoParaCriar = new Pedido(pedido.getId(),pedido.getListaProdutos(), StatusPedido.Recebido,
 				StatusPagamento.EsperandoConfirmação);
+		
 		return pedidoGateway.criaPedido(pedidoParaCriar);
 	}
 	@Override
 	public void atualizaPedido(Pedido pedido) throws PedidoNaoEncontradoException {
 
-		Pedido pedidoParaAtualizar = pedidoGateway.buscaPedidoId(pedido.idPedido());
+		Pedido pedidoParaAtualizar = pedidoGateway.buscaPedidoId(pedido.getId());
 
 		if (pedidoParaAtualizar == null)
 			throw new PedidoNaoEncontradoException();
 
-		Pedido pedidoAtaulizado = new Pedido(pedidoParaAtualizar.idPedido(), pedido.nomeLanche(),
-				pedido.nomeAcompanhamento(), pedido.nomeBebida(), pedido.nomeSobremesa(), pedido.statusPedido(),
-				pedido.statusPagamento());
+		Pedido pedidoAtaulizado = new Pedido(pedidoParaAtualizar.getId(),  pedido.getListaProdutos(), pedido.getStatusPedido(),
+				pedido.getStatusPagamento());
 
 		pedidoGateway.atualizaPedido(pedidoAtaulizado);
 	}
@@ -83,9 +74,7 @@ public class PedidoUseCasesImp implements PedidoUseCases {
 		if (pedidoParaAtualizar == null)
 			throw new PedidoNaoEncontradoException();
 
-		Pedido pedidoAtaulizado = new Pedido(pedidoParaAtualizar.idPedido(), pedidoParaAtualizar.nomeLanche(),
-				pedidoParaAtualizar.nomeAcompanhamento(), pedidoParaAtualizar.nomeBebida(),
-				pedidoParaAtualizar.nomeSobremesa(), status, pedidoParaAtualizar.statusPagamento());
+		Pedido pedidoAtaulizado = new Pedido(pedidoParaAtualizar.getId(), pedidoParaAtualizar.getListaProdutos(), status, pedidoParaAtualizar.getStatusPagamento());
 		pedidoGateway.atualizaPedido(pedidoAtaulizado);
 	}
 	
@@ -94,15 +83,13 @@ public class PedidoUseCasesImp implements PedidoUseCases {
 		Pedido pedidoParaAtualizar = pedidoGateway.buscaPedidoId(id);
 		Pedido pedidoAtaulizado;
 		if (topic.equals("chargebacks")) {
-			pedidoAtaulizado = new Pedido(pedidoParaAtualizar.idPedido(), pedidoParaAtualizar.nomeLanche(),
-					pedidoParaAtualizar.nomeAcompanhamento(), pedidoParaAtualizar.nomeBebida(),
-					pedidoParaAtualizar.nomeSobremesa(), StatusPedido.Finalizado, StatusPagamento.Cancelado);
+			pedidoAtaulizado = new Pedido(pedidoParaAtualizar.getId(), 
+					pedidoParaAtualizar.getListaProdutos(), StatusPedido.Finalizado, StatusPagamento.Cancelado);
 			pedidoGateway.atualizaPedido(pedidoAtaulizado);
 			return "Pedido cancelado";
 		} else {
-			pedidoAtaulizado = new Pedido(pedidoParaAtualizar.idPedido(), pedidoParaAtualizar.nomeLanche(),
-					pedidoParaAtualizar.nomeAcompanhamento(), pedidoParaAtualizar.nomeBebida(),
-					pedidoParaAtualizar.nomeSobremesa(), StatusPedido.EmPreparacao, StatusPagamento.Pago);
+			pedidoAtaulizado = new Pedido(pedidoParaAtualizar.getId(), 
+					pedidoParaAtualizar.getListaProdutos(), StatusPedido.EmPreparacao, StatusPagamento.Pago);
 			pedidoGateway.atualizaPedido(pedidoAtaulizado);
 			return "Pedido pago com sucesso";
 

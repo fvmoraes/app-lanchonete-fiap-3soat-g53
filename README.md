@@ -92,6 +92,33 @@ docker start postgres_fiap_3soat_g53
 > Neste vídeo do youtube explicamos mais sobre a arquitetura:
 [![Assista ao vídeo](/img/youtube.png)](https://www.youtube.com/watch?v=E8MHnRbv1Y8)
 
+
+## Modelo de banco de dados
+
+![](/img/banco_dados.jpg)
+
+O Banco de dados é composto por tres tabelas.
+
+### tabela Cliente
+A tabela cliente é formado por três campos:
+1 - **CPF** Chave primária em formato String. Guarda a informação do CPF do cliente.
+2 - **nome** em formato String. Guarda a informação do nome completo da pessoa.
+3 - **email** em formato String Guarda a informação de email para contato. 
+
+### Tabela Pedidos
+A tabela pedidos é formato por quatro atributos
+1 - **id** Chave primária em formato numerico. Guarda o id cujo pedido será referenciado.
+2 - **lista_produtos_pedido** em formato String. Guarda em formato JSON uma lista com o nome dos produtos relacionados ao pedido.
+3 - **status_pagamento** em formato String. Guarda o status de pagamento do pedido. Pode conter um dos três estados Pago, EsperandoConfirmação ou Cancelado.
+4 - **status_pedido** em formato String. Guarda o status do pedido. Pode conter um dos quatro estados Recebido, EmPreparacao, Pronto ou Finalizado.
+
+### Tabela Produtos
+A tabela produtos é formado por três atributos.
+1 - **nome** Chave primária em formato String. Guarda o nome do produto.
+2 - **categoria** em formato String. Guarda a informação da categoria do produto pode ter como valor Lanche, Bebida, Acompanhamento ou Sobremesa.
+3 - **valor** em formato numerico. Guarda a informação do preço do produto.
+
+
 ---
 ---
 ## Mais informações sobre a API

@@ -6,7 +6,7 @@ import com.fiap.lanchonete.infrastructure.persistence.entity.ProdutoEntity;
 public class ProdutoEntityMapper {
 
 	public ProdutoEntity paraProdutoEntity(Produto produto) {
-	return new ProdutoEntity(produto.categoria(),produto.nome(),produto.descricao(),produto.valor());
+	return new ProdutoEntity(produto.getCategoria(),produto.getNome(),produto.getDescricao(),produto.getValor());
 
 	}
 	

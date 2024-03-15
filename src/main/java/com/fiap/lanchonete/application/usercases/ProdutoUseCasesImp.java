@@ -29,7 +29,7 @@ public class ProdutoUseCasesImp implements ProdutoUseCases{
 	@Override
 	public void cadastraProduto(Produto produto) throws ProdutoJaCadastradoException {
 		
-		if (produtoGateway.buscarPeloNome(produto.nome()) != null)
+		if (produtoGateway.buscarPeloNome(produto.getNome()) != null)
 			throw new ProdutoJaCadastradoException();
 
 		produtoGateway.salvar(produto);
@@ -38,7 +38,7 @@ public class ProdutoUseCasesImp implements ProdutoUseCases{
 	@Override
 	public void atualizaProduto(Produto produto) throws ProdutoNaoEncontradoException {
 		
-		if (produtoGateway.buscarPeloNome(produto.nome()) == null)
+		if (produtoGateway.buscarPeloNome(produto.getNome()) == null)
 			throw new ProdutoNaoEncontradoException();
 		produtoGateway.salvar(produto);
 	}

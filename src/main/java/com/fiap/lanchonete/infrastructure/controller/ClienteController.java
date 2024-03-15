@@ -17,7 +17,7 @@ import com.fiap.lanchonete.application.usercases.ClienteUseCases;
 import com.fiap.lanchonete.application.usercases.exceptions.ClientJaCadastradoException;
 import com.fiap.lanchonete.application.usercases.exceptions.ClientNaoEncontradoException;
 import com.fiap.lanchonete.infrastructure.controller.mapper.ClienteRequestMapper;
-import com.fiap.lanchonete.infrastructure.controller.requestsdto.ClenteRequest;
+import com.fiap.lanchonete.infrastructure.controller.requestsdto.ClienteRequest;
 import com.fiap.lanchonete.infrastructure.controller.requestsdto.ClienteResponse;
 
 @RestController
@@ -48,7 +48,7 @@ public class ClienteController {
 	}
 
 	@PostMapping
-	public ResponseEntity<String> criarCliente(@RequestBody ClenteRequest clientRequest) {
+	public ResponseEntity<String> criarCliente(@RequestBody ClienteRequest clientRequest) {
 		try {
 			clienteUseCases.criaCliente(mapper.paraCliente(clientRequest));
 			return new ResponseEntity<>("Cliente cadastrado com sucesso", HttpStatus.CREATED);
@@ -58,7 +58,7 @@ public class ClienteController {
 	}
 
 	@DeleteMapping
-	public ResponseEntity<String> deletaCliente(@RequestBody ClenteRequest dto) {
+	public ResponseEntity<String> deletaCliente(@RequestBody ClienteRequest dto) {
 		clienteUseCases.deletaCliente(mapper.paraCliente(dto));
 			return new ResponseEntity<>("Cliente deletado com sucesso", HttpStatus.OK);
 	
@@ -71,7 +71,7 @@ public class ClienteController {
 			}
 
 	@PutMapping
-	public ResponseEntity<String> atualizaClientes(@RequestBody ClenteRequest dto) {
+	public ResponseEntity<String> atualizaClientes(@RequestBody ClienteRequest dto) {
 		try {
 			clienteUseCases.atualizaCliente(mapper.paraCliente(dto));
 			return new ResponseEntity<>("Cliente atualizado com sucesso", HttpStatus.OK);
