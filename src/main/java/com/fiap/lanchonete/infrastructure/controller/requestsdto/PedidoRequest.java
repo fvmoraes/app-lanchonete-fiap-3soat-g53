@@ -2,13 +2,14 @@ package com.fiap.lanchonete.infrastructure.controller.requestsdto;
 
 import java.util.List;
 
+import com.fiap.lanchonete.domain.entity.Produto;
 import com.fiap.lanchonete.domain.entity.StatusPagamento;
 import com.fiap.lanchonete.domain.entity.StatusPedido;
 
 public class PedidoRequest {
 	
 	Integer idPedido;
-	List<String> listaProdutos;
+	List<Produto> listaProdutos;
 	StatusPedido statusPedido;
 	StatusPagamento statusPagamento;
 	
@@ -16,7 +17,7 @@ public class PedidoRequest {
 		
 	}
 	
-	public PedidoRequest(Integer idPedido, List<String> listaProdutos, StatusPedido statusPedido,
+	public PedidoRequest(Integer idPedido, List<Produto> listaProdutos, StatusPedido statusPedido,
 			StatusPagamento statusPagamento) {
 		this.idPedido = idPedido;
 		this.listaProdutos = listaProdutos;
@@ -29,10 +30,10 @@ public class PedidoRequest {
 	public void setIdPedido(Integer idPedido) {
 		this.idPedido = idPedido;
 	}
-	public List<String> getListaProdutos() {
+	public List<Produto> getListaProdutos() {
 		return listaProdutos;
 	}
-	public void setListaProdutos(List<String> listaProdutos) {
+	public void setListaProdutos(List<Produto> listaProdutos) {
 		this.listaProdutos = listaProdutos;
 	}
 	public StatusPedido getStatusPedido() {

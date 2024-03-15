@@ -1,6 +1,7 @@
 package com.fiap.lanchonete.application.usercases;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.fiap.lanchonete.application.gateways.PedidoGateway;
 import com.fiap.lanchonete.application.gateways.ProdutoGateway;
@@ -44,11 +45,11 @@ public class PedidoUseCasesImp implements PedidoUseCases {
 	public Pedido realizaPedido(Pedido pedido) throws PedidoComProdutoNaoCadastradoException {
 		
 		 if (pedido.getListaProdutos().stream()
-		            .anyMatch(produto -> produtoGateway.buscarPeloNome(produto) == null)) {
+		            .anyMatch(produto -> produtoGateway.buscarPeloNome(produto.getNome()) == null)) {
 		        throw new PedidoComProdutoNaoCadastradoException();
 		    }
 		
-		Pedido pedidoParaCriar = new Pedido(pedido.getId(),pedido.getListaProdutos(), StatusPedido.Recebido,
+		Pedido pedidoParaCriar = new Pedido(pedido.getId(),pedido.getListaProdutos().stream().map(produto -> produtoGateway.buscarPeloNome(produto.getNome())).collect(Collectors.toList()), StatusPedido.Recebido,
 				StatusPagamento.EsperandoConfirmação);
 		
 		return pedidoGateway.criaPedido(pedidoParaCriar);

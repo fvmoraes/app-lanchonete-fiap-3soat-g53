@@ -5,10 +5,10 @@ import java.util.List;
 public class Pedido {
 	
 	Integer id;
-	List<String> listaProdutos;
+	List<Produto> listaProdutos;
 	StatusPedido statusPedido;
 	StatusPagamento statusPagamento;
-	public Pedido(Integer id, List<String> listaProdutos, StatusPedido statusPedido,
+	public Pedido(Integer id, List<Produto> listaProdutos, StatusPedido statusPedido,
 			StatusPagamento statusPagamento) {
 	
 		this.id = id;
@@ -25,10 +25,10 @@ public class Pedido {
 		this.id = id;
 	}
 
-	public List<String> getListaProdutos() {
+	public List<Produto> getListaProdutos() {
 		return listaProdutos;
 	}
-	public void setListaProdutos(List<String> listaProdutos) {
+	public void setListaProdutos(List<Produto> listaProdutos) {
 		this.listaProdutos = listaProdutos;
 	}
 	public StatusPedido getStatusPedido() {

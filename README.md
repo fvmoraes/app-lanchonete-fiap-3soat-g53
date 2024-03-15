@@ -101,22 +101,22 @@ O Banco de dados é composto por tres tabelas.
 
 ### tabela Cliente
 A tabela cliente é formado por três campos:
-1 - **CPF** Chave primária em formato String. Guarda a informação do CPF do cliente.
-2 - **nome** em formato String. Guarda a informação do nome completo da pessoa.
-3 - **email** em formato String Guarda a informação de email para contato. 
+1 - **CPF**: Chave primária em formato String. Armazena o CPF do cliente.
+2 - **nome**: Em formato String.  Armazena o nome completo da pessoa.
+3 - **email**: Em formato String. Armazena o endereço de e-mail para contato.
 
 ### Tabela Pedidos
 A tabela pedidos é formato por quatro atributos
-1 - **id** Chave primária em formato numerico. Guarda o id cujo pedido será referenciado.
-2 - **lista_produtos_pedido** em formato String. Guarda em formato JSON uma lista com o nome dos produtos relacionados ao pedido.
-3 - **status_pagamento** em formato String. Guarda o status de pagamento do pedido. Pode conter um dos três estados Pago, EsperandoConfirmação ou Cancelado.
-4 - **status_pedido** em formato String. Guarda o status do pedido. Pode conter um dos quatro estados Recebido, EmPreparacao, Pronto ou Finalizado.
+1 - **id**: Chave primária em formato numerico. Armazena o identificador único do pedido.
+2 - **lista_produtos_pedido**Em formato JSON. Armazena uma lista de objetos contendo informações dos produtos relacionados ao pedido, como nome, quantidade, e preço unitário.
+3 - **status_pagamento**: Em formato String. Armazena o status de pagamento do pedido, podendo ser "Pago", "Esperando Confirmação" ou "Cancelado".
+4 - **status_pedido**: Em formato String. Armazena o status do pedido, podendo ser "Recebido", "Em Preparação", "Pronto" ou "Finalizado".
 
 ### Tabela Produtos
 A tabela produtos é formado por três atributos.
-1 - **nome** Chave primária em formato String. Guarda o nome do produto.
-2 - **categoria** em formato String. Guarda a informação da categoria do produto pode ter como valor Lanche, Bebida, Acompanhamento ou Sobremesa.
-3 - **valor** em formato numerico. Guarda a informação do preço do produto.
+1 - **nome** Chave primária em formato String. Armazena o nome único do produto.
+2 - **categoria** Em formato String.Armazena a categoria do produto, podendo ser "Lanche", "Bebida", "Acompanhamento" ou "Sobremesa".
+3 - **valor** Em formato numérico. Armazena o preço do produto.
 
 
 ---

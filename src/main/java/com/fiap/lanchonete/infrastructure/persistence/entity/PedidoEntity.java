@@ -6,9 +6,13 @@ import java.util.List;
 
 import org.springframework.context.annotation.Lazy;
 
+import com.fiap.lanchonete.domain.entity.Produto;
 import com.fiap.lanchonete.domain.entity.StatusPagamento;
 import com.fiap.lanchonete.domain.entity.StatusPedido;
+import com.fiap.lanchonete.infrastructure.persistence.converters.ProdutoListConverter;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -26,8 +30,9 @@ public class PedidoEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	Integer id;
-    
-	List<String> listaProdutosPedido;
+
+    @Convert(converter = ProdutoListConverter.class)
+    List<Produto> listaProdutosPedido;
 	 
 	@NotNull
 	@Enumerated(EnumType.STRING)
@@ -41,13 +46,13 @@ public class PedidoEntity {
 		
 	}
 
-	public PedidoEntity(List<String> listaProdutosPedido, @NotNull StatusPedido statusPedido,
+	public PedidoEntity(List<Produto> listaProdutosPedido, @NotNull StatusPedido statusPedido,
 			@NotNull StatusPagamento statusPagamento) {
 		this.listaProdutosPedido = listaProdutosPedido;
 		this.statusPedido = statusPedido;
 		this.statusPagamento = statusPagamento;
 	}
-	public PedidoEntity(Integer id,List<String> listaProdutosPedido, @NotNull StatusPedido statusPedido,
+	public PedidoEntity(Integer id,List<Produto> listaProdutosPedido, @NotNull StatusPedido statusPedido,
 			@NotNull StatusPagamento statusPagamento) {
 		this.id = id;
 		this.listaProdutosPedido = listaProdutosPedido;
@@ -63,11 +68,11 @@ public class PedidoEntity {
 		this.id = id;
 	}
 
-	public List<String> getListaProdutosPedido() {
+	public List<Produto> getListaProdutosPedido() {
 		return listaProdutosPedido;
 	}
 
-	public void setListaProdutosPedido(List<String> listaProdutosPedido) {
+	public void setListaProdutosPedido(List<Produto> listaProdutosPedido) {
 		this.listaProdutosPedido = listaProdutosPedido;
 	}
 
