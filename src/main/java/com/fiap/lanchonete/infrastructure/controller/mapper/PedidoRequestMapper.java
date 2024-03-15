@@ -9,15 +9,15 @@ public class PedidoRequestMapper {
 	
 	public Pedido paraObjetoDominio(PedidoRequest pedidoEntity) {
 		return new Pedido(pedidoEntity.getIdPedido(),pedidoEntity.getListaProdutos(),
-				pedidoEntity.getStatusPedido(), pedidoEntity.getStatusPagamento());
+				pedidoEntity.getStatusPedido(), pedidoEntity.getStatusPagamento(), pedidoEntity.getValorTotal());
 
 	}
 	
 	public PedidoResponse paraResponse(Pedido pedido) {
 		return new PedidoResponse(pedido.getId(), pedido.getListaProdutos(),
-				pedido.getStatusPedido(), pedido.getStatusPagamento());
+				pedido.getStatusPedido(), pedido.getStatusPagamento(), pedido.getValorTotal());
 	}
 	public PedidoPagamentoResponse paraResponseDTO(Pedido pedido) {
-		return new PedidoPagamentoResponse(pedido.getId(), pedido.getStatusPagamento());
+		return new PedidoPagamentoResponse(pedido.getId(), pedido.getStatusPagamento(), pedido.getValorTotal());
 	}
 }

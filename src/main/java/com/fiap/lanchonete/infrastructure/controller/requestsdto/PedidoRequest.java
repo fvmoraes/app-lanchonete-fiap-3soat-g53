@@ -1,5 +1,6 @@
 package com.fiap.lanchonete.infrastructure.controller.requestsdto;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import com.fiap.lanchonete.domain.entity.Produto;
@@ -12,7 +13,8 @@ public class PedidoRequest {
 	List<Produto> listaProdutos;
 	StatusPedido statusPedido;
 	StatusPagamento statusPagamento;
-	
+	BigDecimal valorTotal;
+
 	public PedidoRequest() {
 		
 	}
@@ -47,6 +49,14 @@ public class PedidoRequest {
 	}
 	public void setStatusPagamento(StatusPagamento statusPagamento) {
 		this.statusPagamento = statusPagamento;
+	}
+
+	public BigDecimal getValorTotal() {
+		return valorTotal;
+	}
+
+	public void setValorTotal(BigDecimal valorTotal) {
+		this.valorTotal = valorTotal;
 	}
 
 	

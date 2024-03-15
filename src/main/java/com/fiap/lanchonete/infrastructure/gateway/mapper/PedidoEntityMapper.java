@@ -6,12 +6,12 @@ import com.fiap.lanchonete.infrastructure.persistence.entity.PedidoEntity;
 public class PedidoEntityMapper {
 	ProdutoEntityMapper mapperProduct = new ProdutoEntityMapper();
 	public PedidoEntity paraPedidoEntity(Pedido PedidoObjectDomain) {
-	return new PedidoEntity(PedidoObjectDomain.getId() ,PedidoObjectDomain.getListaProdutos(),PedidoObjectDomain.getStatusPedido(), PedidoObjectDomain.getStatusPagamento());
+	return new PedidoEntity(PedidoObjectDomain.getId() ,PedidoObjectDomain.getListaProdutos(),PedidoObjectDomain.getStatusPedido(), PedidoObjectDomain.getStatusPagamento(), PedidoObjectDomain.getValorTotal());
 
 	}
 	
 	public Pedido paraObjetoDominio(PedidoEntity pedidoEntity) {
 		return new Pedido(pedidoEntity.getId(), pedidoEntity.getListaProdutosPedido(),
-				pedidoEntity.getStatusPedido(), pedidoEntity.getStatusPagamento());
+				pedidoEntity.getStatusPedido(), pedidoEntity.getStatusPagamento(), pedidoEntity.getValorTotal());
 	}
 }

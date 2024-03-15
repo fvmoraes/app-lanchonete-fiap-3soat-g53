@@ -1,5 +1,6 @@
 package com.fiap.lanchonete.domain.entity;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class Pedido {
@@ -8,13 +9,16 @@ public class Pedido {
 	List<Produto> listaProdutos;
 	StatusPedido statusPedido;
 	StatusPagamento statusPagamento;
+	BigDecimal valorTotal;
+	
 	public Pedido(Integer id, List<Produto> listaProdutos, StatusPedido statusPedido,
-			StatusPagamento statusPagamento) {
+			StatusPagamento statusPagamento,  BigDecimal valorTotal) {
 	
 		this.id = id;
 		this.listaProdutos = listaProdutos;
 		this.statusPedido = statusPedido;
 		this.statusPagamento = statusPagamento;
+		this.valorTotal = valorTotal;
 	}
 	
 	public Integer getId() {
@@ -42,6 +46,14 @@ public class Pedido {
 	}
 	public void setStatusPagamento(StatusPagamento statusPagamento) {
 		this.statusPagamento = statusPagamento;
+	}
+
+	public BigDecimal getValorTotal() {
+		return valorTotal;
+	}
+
+	public void setValorTotal(BigDecimal valorTotal) {
+		this.valorTotal = valorTotal;
 	}
 	
 }

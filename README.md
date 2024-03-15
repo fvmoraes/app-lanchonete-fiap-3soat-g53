@@ -106,12 +106,12 @@ A tabela cliente é formado por três campos:
 3 - **email**: Em formato String. Armazena o endereço de e-mail para contato.
 
 ### Tabela Pedidos
-A tabela pedidos é formato por quatro atributos
+A tabela pedidos é formato por cinco atributos
 1 - **id**: Chave primária em formato numerico. Armazena o identificador único do pedido.
 2 - **lista_produtos_pedido**Em formato JSON. Armazena uma lista de objetos contendo informações dos produtos relacionados ao pedido, como nome, quantidade, e preço unitário.
 3 - **status_pagamento**: Em formato String. Armazena o status de pagamento do pedido, podendo ser "Pago", "Esperando Confirmação" ou "Cancelado".
 4 - **status_pedido**: Em formato String. Armazena o status do pedido, podendo ser "Recebido", "Em Preparação", "Pronto" ou "Finalizado".
-
+5 - **valor_total**: Em formato numerico. Armazena o valor total do pedido.
 ### Tabela Produtos
 A tabela produtos é formado por três atributos.
 1 - **nome** Chave primária em formato String. Armazena o nome único do produto.

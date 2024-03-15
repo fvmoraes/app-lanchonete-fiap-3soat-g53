@@ -2,6 +2,7 @@ package com.fiap.lanchonete.infrastructure.persistence.entity;
 
 
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.context.annotation.Lazy;
@@ -11,7 +12,6 @@ import com.fiap.lanchonete.domain.entity.StatusPagamento;
 import com.fiap.lanchonete.domain.entity.StatusPedido;
 import com.fiap.lanchonete.infrastructure.persistence.converters.ProdutoListConverter;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -42,22 +42,27 @@ public class PedidoEntity {
 	@Enumerated(EnumType.STRING)
     StatusPagamento statusPagamento;
 	
+	BigDecimal valorTotal;
+	
 	public PedidoEntity() {
 		
 	}
 
 	public PedidoEntity(List<Produto> listaProdutosPedido, @NotNull StatusPedido statusPedido,
-			@NotNull StatusPagamento statusPagamento) {
+			@NotNull StatusPagamento statusPagamento, BigDecimal valorTotal) {
 		this.listaProdutosPedido = listaProdutosPedido;
 		this.statusPedido = statusPedido;
 		this.statusPagamento = statusPagamento;
+		this.valorTotal = valorTotal;
 	}
 	public PedidoEntity(Integer id,List<Produto> listaProdutosPedido, @NotNull StatusPedido statusPedido,
-			@NotNull StatusPagamento statusPagamento) {
+			@NotNull StatusPagamento statusPagamento, BigDecimal valorTotal) {
 		this.id = id;
 		this.listaProdutosPedido = listaProdutosPedido;
 		this.statusPedido = statusPedido;
 		this.statusPagamento = statusPagamento;
+		this.valorTotal = valorTotal;
+
 	}
 
 	public Integer getId() {
@@ -90,6 +95,14 @@ public class PedidoEntity {
 
 	public void setStatusPagamento(StatusPagamento statusPagamento) {
 		this.statusPagamento = statusPagamento;
+	}
+
+	public BigDecimal getValorTotal() {
+		return valorTotal;
+	}
+
+	public void setValorTotal(BigDecimal valorTotal) {
+		this.valorTotal = valorTotal;
 	}
 		
 }
