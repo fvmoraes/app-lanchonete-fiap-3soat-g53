@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/fiap
+    url: ${CONNECTION_STRING:jdbc:postgresql://localhost:5432/fiap}
     password: postgres
     username: postgres
     driver-class-name: org.postgresql.Driver

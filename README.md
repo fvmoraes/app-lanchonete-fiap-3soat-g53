@@ -95,9 +95,16 @@ docker start postgres_fiap_3soat_g53
 
 ## Modelo de banco de dados
 
+
+Foi utilizado o modelo relacional para desenvolver o aplicativo pois o tamanho dos dados e o volume de transações esperados não são extremamente altos, a escalabilidade vertical oferecida por bancos de dados relacionais é suficiente.
+
+O bando de dados utilizado foi o Postgres pois disponibiliza suporte a colunas em formato JSOn e disponibilizza Atomicidade, Consistência, Isolamento e Durabilidade.
+
+O Banco de dados é composto por tres tabelas conforme imagem abaixo:
+
+
 ![](/img/banco_dados.jpg)
 
-O Banco de dados é composto por tres tabelas.
 
 ### tabela Cliente
 A tabela cliente é formado por três campos:
@@ -112,6 +119,7 @@ A tabela pedidos é formato por cinco atributos
 3 - **status_pagamento**: Em formato String. Armazena o status de pagamento do pedido, podendo ser "Pago", "Esperando Confirmação" ou "Cancelado".
 4 - **status_pedido**: Em formato String. Armazena o status do pedido, podendo ser "Recebido", "Em Preparação", "Pronto" ou "Finalizado".
 5 - **valor_total**: Em formato numerico. Armazena o valor total do pedido.
+
 ### Tabela Produtos
 A tabela produtos é formado por três atributos.
 1 - **nome** Chave primária em formato String. Armazena o nome único do produto.
