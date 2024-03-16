@@ -93,39 +93,54 @@ docker start postgres_fiap_3soat_g53
 [![Assista ao vídeo](/img/youtube.png)](https://www.youtube.com/watch?v=E8MHnRbv1Y8)
 
 
-## Modelo de banco de dados
+## ADR: Modelo de Dados para Sistema de Pedidos
 
+### Contexto
 
-Foi utilizado o modelo relacional para desenvolver o aplicativo pois o tamanho dos dados e o volume de transações esperados não são extremamente altos, a escalabilidade vertical oferecida por bancos de dados relacionais é suficiente.
+Estamos desenvolvendo um sistema de pedidos para uma empresa que oferece serviços de entrega de alimentos. Precisamos definir um modelo de dados que permita armazenar informações sobre clientes, pedidos e produtos de forma eficiente e escalável.
 
-O bando de dados utilizado foi o Postgres pois disponibiliza suporte a colunas em formato JSOn e disponibilizza Atomicidade, Consistência, Isolamento e Durabilidade.
+### Decisão
 
-O Banco de dados é composto por tres tabelas conforme imagem abaixo:
+Decidimos adotar um modelo de dados relacional, visto que o tamanho dos dados e o volume de transações esperados não são extremamente altos, e a escalabilidade vertical oferecida por bancos de dados relacionais é suficiente para nossas necessidades.
 
+Optamos pelo banco de dados Postgres devido às seguintes razões:
 
-![](/img/banco_dados.jpg)
+1 - Suporte a colunas em formato JSON: O Postgres disponibiliza suporte nativo para colunas em formato JSON, o que nos permite armazenar a lista de produtos de cada pedido de forma flexível na tabela Pedidos.
 
+2 - ACID (Atomicidade, Consistência, Isolamento e Durabilidade): O Postgres oferece garantias ACID, o que é essencial para manter a integridade dos dados em um ambiente transacional como o nosso sistema de pedidos.
 
-### tabela Cliente
-A tabela cliente é formado por três campos:
-1 - **CPF**: Chave primária em formato String. Armazena o CPF do cliente.
-2 - **nome**: Em formato String.  Armazena o nome completo da pessoa.
-3 - **email**: Em formato String. Armazena o endereço de e-mail para contato.
+### Tabela Cliente
+
+    **CPF**: Chave primária em formato String. Armazena o CPF do cliente.
+    **Nome**: Em formato String. Armazena o nome completo da pessoa.
+    **Email**: Em formato String. Armazena o endereço de e-mail para contato.
 
 ### Tabela Pedidos
-A tabela pedidos é formato por cinco atributos
-1 - **id**: Chave primária em formato numerico. Armazena o identificador único do pedido.
-2 - **lista_produtos_pedido**Em formato JSON. Armazena uma lista de objetos contendo informações dos produtos relacionados ao pedido, como nome, quantidade, e preço unitário.
-3 - **status_pagamento**: Em formato String. Armazena o status de pagamento do pedido, podendo ser "Pago", "Esperando Confirmação" ou "Cancelado".
-4 - **status_pedido**: Em formato String. Armazena o status do pedido, podendo ser "Recebido", "Em Preparação", "Pronto" ou "Finalizado".
-5 - **valor_total**: Em formato numerico. Armazena o valor total do pedido.
 
-### Tabela Produtos
-A tabela produtos é formado por três atributos.
-1 - **nome** Chave primária em formato String. Armazena o nome único do produto.
-2 - **categoria** Em formato String.Armazena a categoria do produto, podendo ser "Lanche", "Bebida", "Acompanhamento" ou "Sobremesa".
-3 - **valor** Em formato numérico. Armazena o preço do produto.
+    **Id**: Chave primária em formato numérico. Armazena o identificador único do pedido.
+    **Lista_produtos_pedido**: Em formato JSON. Armazena uma lista de objetos contendo informações dos produtos relacionados ao pedido, como nome, quantidade e preço unitário.
+    **Status_pagamento**: Em formato String. Armazena o status de pagamento do pedido, podendo ser "Pago", "Esperando Confirmação" ou "Cancelado".
+    **Status_pedido**: Em formato String. Armazena o status do pedido, podendo ser "Recebido", "Em Preparação", "Pronto" ou "Finalizado".
+    **Valor_total**: Em formato numérico. Armazena o valor total do pedido.
 
+Tabela Produtos
+
+    **Nome**: Chave primária em formato String. Armazena o nome único do produto.
+    **Categoria**: Em formato String. Armazena a categoria do produto, podendo ser "Lanche", "Bebida", "Acompanhamento" ou "Sobremesa".
+    **Valor**: Em formato numérico. Armazena o preço do produto.
+
+### Justificativa
+
+A escolha do modelo de dados relacional e do banco de dados Postgres é adequada para o tamanho e complexidade do nosso sistema de pedidos. Essa decisão nos permite manter a integridade dos dados, garantir a consistência das transações e aproveitar os recursos oferecidos pelo Postgres, como suporte a JSON e ACID.
+
+
+### Consequências
+
+1- A utilização do modelo relacional e do Postgres facilita o desenvolvimento, manutenção e operação do sistema de pedidos.
+
+2 - É necessário garantir o bom dimensionamento do banco de dados Postgres para lidar com o crescimento esperado do sistema ao longo do tempo.
+
+3 - Podemos explorar recursos avançados oferecidos pelo Postgres, como índices e otimizações de consulta, para melhorar o desempenho do sistema conforme necessário.
 
 ---
 ---
