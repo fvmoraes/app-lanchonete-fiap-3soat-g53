@@ -1,12 +1,15 @@
 package com.fiap.lanchonete.application.usercases;
 
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.fiap.lanchonete.application.gateways.PedidoGateway;
 import com.fiap.lanchonete.application.gateways.ProdutoGateway;
 import com.fiap.lanchonete.application.usercases.exceptions.PedidoComProdutoNaoCadastradoException;
 import com.fiap.lanchonete.application.usercases.exceptions.PedidoNaoEncontradoException;
 import com.fiap.lanchonete.domain.entity.Pedido;
+import com.fiap.lanchonete.domain.entity.Produto;
 import com.fiap.lanchonete.domain.entity.StatusPagamento;
 import com.fiap.lanchonete.domain.entity.StatusPedido;
 
@@ -42,36 +45,30 @@ public class PedidoUseCasesImp implements PedidoUseCases {
 	
 	@Override
 	public Pedido realizaPedido(Pedido pedido) throws PedidoComProdutoNaoCadastradoException {
-		if (pedido.nomeLanche() != null && produtoGateway.buscarPeloNome(pedido.nomeLanche()) == null) {
-			throw new PedidoComProdutoNaoCadastradoException();
-		}
-		if (pedido.nomeBebida() != null && produtoGateway.buscarPeloNome(pedido.nomeBebida()) == null) {
-			throw new PedidoComProdutoNaoCadastradoException();
-		}
-		if (pedido.nomeAcompanhamento() != null && produtoGateway.buscarPeloNome(pedido.nomeAcompanhamento()) == null) {
-			throw new PedidoComProdutoNaoCadastradoException();
-
-		}
-		if (pedido.nomeSobremesa() != null && produtoGateway.buscarPeloNome(pedido.nomeSobremesa()) == null) {
-			throw new PedidoComProdutoNaoCadastradoException();
-		}
-
-		Pedido pedidoParaCriar = new Pedido(pedido.idPedido(), pedido.nomeLanche(), pedido.nomeAcompanhamento(),
-				pedido.nomeBebida(), pedido.nomeSobremesa(), StatusPedido.Recebido,
-				StatusPagamento.EsperandoConfirmação);
+		
+		 if (pedido.getListaProdutos().stream()
+		            .anyMatch(produto -> produtoGateway.buscarPeloNome(produto.getNome()) == null)) {
+		        throw new PedidoComProdutoNaoCadastradoException();
+		    }
+		List<Produto> pedidoComTodosDados =   pedido.getListaProdutos().stream().map(produto -> produtoGateway.buscarPeloNome(produto.getNome())).collect(Collectors.toList());
+		Pedido pedidoParaCriar = new Pedido(pedido.getId(),pedidoComTodosDados, StatusPedido.Recebido,
+				StatusPagamento.EsperandoConfirmação, calculaValorTotal(pedidoComTodosDados.stream().map(produto -> produto.getValor()).collect(Collectors.toList())));
+		
 		return pedidoGateway.criaPedido(pedidoParaCriar);
 	}
 	@Override
 	public void atualizaPedido(Pedido pedido) throws PedidoNaoEncontradoException {
 
-		Pedido pedidoParaAtualizar = pedidoGateway.buscaPedidoId(pedido.idPedido());
+		Pedido pedidoParaAtualizar = pedidoGateway.buscaPedidoId(pedido.getId());
 
 		if (pedidoParaAtualizar == null)
 			throw new PedidoNaoEncontradoException();
 
-		Pedido pedidoAtaulizado = new Pedido(pedidoParaAtualizar.idPedido(), pedido.nomeLanche(),
-				pedido.nomeAcompanhamento(), pedido.nomeBebida(), pedido.nomeSobremesa(), pedido.statusPedido(),
-				pedido.statusPagamento());
+		List<Produto> pedidoComTodosDados = pedido.getListaProdutos().stream().map(produto -> produtoGateway.buscarPeloNome(produto.getNome())).collect(Collectors.toList());
+
+		
+		Pedido pedidoAtaulizado = new Pedido(pedidoParaAtualizar.getId(),  pedidoComTodosDados, pedido.getStatusPedido(),
+				pedido.getStatusPagamento(),calculaValorTotal(pedidoComTodosDados.stream().map(produto -> produto.getValor()).collect(Collectors.toList())));
 
 		pedidoGateway.atualizaPedido(pedidoAtaulizado);
 	}
@@ -83,9 +80,7 @@ public class PedidoUseCasesImp implements PedidoUseCases {
 		if (pedidoParaAtualizar == null)
 			throw new PedidoNaoEncontradoException();
 
-		Pedido pedidoAtaulizado = new Pedido(pedidoParaAtualizar.idPedido(), pedidoParaAtualizar.nomeLanche(),
-				pedidoParaAtualizar.nomeAcompanhamento(), pedidoParaAtualizar.nomeBebida(),
-				pedidoParaAtualizar.nomeSobremesa(), status, pedidoParaAtualizar.statusPagamento());
+		Pedido pedidoAtaulizado = new Pedido(pedidoParaAtualizar.getId(), pedidoParaAtualizar.getListaProdutos(), status, pedidoParaAtualizar.getStatusPagamento(), pedidoParaAtualizar.getValorTotal());
 		pedidoGateway.atualizaPedido(pedidoAtaulizado);
 	}
 	
@@ -94,20 +89,25 @@ public class PedidoUseCasesImp implements PedidoUseCases {
 		Pedido pedidoParaAtualizar = pedidoGateway.buscaPedidoId(id);
 		Pedido pedidoAtaulizado;
 		if (topic.equals("chargebacks")) {
-			pedidoAtaulizado = new Pedido(pedidoParaAtualizar.idPedido(), pedidoParaAtualizar.nomeLanche(),
-					pedidoParaAtualizar.nomeAcompanhamento(), pedidoParaAtualizar.nomeBebida(),
-					pedidoParaAtualizar.nomeSobremesa(), StatusPedido.Finalizado, StatusPagamento.Cancelado);
+			pedidoAtaulizado = new Pedido(pedidoParaAtualizar.getId(), 
+					pedidoParaAtualizar.getListaProdutos(), StatusPedido.Finalizado, StatusPagamento.Cancelado,pedidoParaAtualizar.getValorTotal());
 			pedidoGateway.atualizaPedido(pedidoAtaulizado);
 			return "Pedido cancelado";
 		} else {
-			pedidoAtaulizado = new Pedido(pedidoParaAtualizar.idPedido(), pedidoParaAtualizar.nomeLanche(),
-					pedidoParaAtualizar.nomeAcompanhamento(), pedidoParaAtualizar.nomeBebida(),
-					pedidoParaAtualizar.nomeSobremesa(), StatusPedido.EmPreparacao, StatusPagamento.Pago);
+			pedidoAtaulizado = new Pedido(pedidoParaAtualizar.getId(), 
+					pedidoParaAtualizar.getListaProdutos(), StatusPedido.EmPreparacao, StatusPagamento.Pago, pedidoParaAtualizar.getValorTotal());
 			pedidoGateway.atualizaPedido(pedidoAtaulizado);
 			return "Pedido pago com sucesso";
 
 		}
 
+	}
+
+	@Override
+	public BigDecimal calculaValorTotal(List<BigDecimal> valores) {
+		return valores.stream()
+        .reduce(BigDecimal.ZERO, BigDecimal::add);
+		 
 	}
 
 }

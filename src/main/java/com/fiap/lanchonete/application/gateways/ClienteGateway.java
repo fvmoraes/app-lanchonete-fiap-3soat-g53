@@ -2,7 +2,6 @@ package com.fiap.lanchonete.application.gateways;
 
 import java.util.List;
 
-import com.fiap.lanchonete.application.usercases.exceptions.ClientNaoEncontradoException;
 import com.fiap.lanchonete.domain.entity.Cliente;
 
 public interface ClienteGateway { 

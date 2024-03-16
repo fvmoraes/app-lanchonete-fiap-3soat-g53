@@ -1,5 +1,6 @@
 package com.fiap.lanchonete.application.usercases;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import com.fiap.lanchonete.application.usercases.exceptions.PedidoComProdutoNaoCadastradoException;
@@ -16,4 +17,5 @@ public interface PedidoUseCases {
 	public void atualizaPedido(Pedido pedido) throws PedidoNaoEncontradoException;
 	public void atualizaPedidoStatus(Integer id, StatusPedido status) throws PedidoNaoEncontradoException;
 	public String atualizaPedidoPagamneto(String topic, Integer id);
+	public BigDecimal calculaValorTotal(List<BigDecimal> valores);
 }

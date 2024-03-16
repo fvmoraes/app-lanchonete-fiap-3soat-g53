@@ -7,11 +7,11 @@ import com.fiap.lanchonete.infrastructure.controller.requestsdto.ProdutoRequest;
 public class ProdutoRequestMapper {
 	
 	public Produto paraObjetoDominio(ProdutoRequest produtoRequest) {
-		return new Produto(produtoRequest.categoria(), produtoRequest.nome(), produtoRequest.descricao(), produtoRequest.valor());
+		return new Produto(produtoRequest.getCategoria(), produtoRequest.getNome(), produtoRequest.getDescricao(), produtoRequest.getValor());
 
 	}
 	
 	public ProdutoResponse paraResponse(Produto Produto) {
-		return new ProdutoResponse(Produto.categoria(), Produto.nome(), Produto.descricao(), Produto.valor());
+		return new ProdutoResponse(Produto.getCategoria(), Produto.getNome(), Produto.getDescricao(), Produto.getValor());
 	}
 }

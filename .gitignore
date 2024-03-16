@@ -6,3 +6,4 @@ build/volumes
 **/.settings
 **/.classpath
 **/target
+**/factorypath
