@@ -18,16 +18,21 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-    # - name: Build JAR with Maven
-    #   run: mvn -B package --file pom.xml
+    - name: Build JAR with Maven
+      run: mvn -B verify
     - name: Build Docker image
       run: docker pull --platform linux/arm64 eclipse-temurin:17-jre-focal && docker build -f docker/Dockerfile -t local/applanchonetetok8s:latest .
-    - name: Authenticate with AWS ECR
-      env:
-        aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      run: aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 339712845518.dkr.ecr.us-east-1.amazonaws.com
-    - name: Tag Docker image
-      run: docker tag local/applanchonetetok8s:latest 339712845518.dkr.ecr.us-east-1.amazonaws.com/applanchonetetok8s:latest
-    - name: Push Docker image to AWS ECR
-      run: docker push 339712845518.dkr.ecr.us-east-1.amazonaws.com/applanchonetetok8s:latest
+    - name: Authenticate with Docker Hub
+      run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+    - name: Push Docker image to Docker Hub
+      run: docker push local/applanchonetetok8s:latest
+
+    # - name: Authenticate with AWS ECR
+    #   env:
+    #     aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+    #     aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    #   run: aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 339712845518.dkr.ecr.us-east-1.amazonaws.com
+    # - name: Tag Docker image
+    #   run: docker tag local/applanchonetetok8s:latest 339712845518.dkr.ecr.us-east-1.amazonaws.com/applanchonetetok8s:latest
+    # - name: Push Docker image to AWS ECR
+    #   run: docker push 339712845518.dkr.ecr.us-east-1.amazonaws.com/applanchonetetok8s:latest
