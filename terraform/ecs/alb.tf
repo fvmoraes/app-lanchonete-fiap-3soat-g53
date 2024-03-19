@@ -2,11 +2,9 @@ resource "aws_lb" "lb_3soat_g53" {
   name               = "ECS-3SOAT-G53-ALB"
   security_groups    = [aws_security_group.alb.id]
   load_balancer_type = "application"
-
+  internal = true
   subnets = [aws_subnet.sbn_3soat_g53["pub_a"].id, aws_subnet.sbn_3soat_g53["pub_b"].id]
-
   tags = merge(local.common_tags, { Name = "ECS-3SOAT-G53-ALB" })
-
 }
 
 resource "aws_lb_target_group" "lb_tg_3soat_g53" {
