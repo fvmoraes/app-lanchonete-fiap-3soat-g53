@@ -14,7 +14,8 @@ secretGenerator:
 - name: applanchonete-secret
   type: Opaque
   literals:
-  - FOR_FUTURE_USE=abc123
+  - DB_PASS=postgres
+  - DB_USER=postgres
 
 configMapGenerator:
 - name: applanchonete-configmap

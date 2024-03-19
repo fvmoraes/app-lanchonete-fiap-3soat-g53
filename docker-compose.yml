@@ -41,6 +41,8 @@ services:
     container_name: applanchonete_fiap_3soat_g53
     environment:
       CONNECTION_STRING: jdbc:postgresql://172.34.0.2:5432/fiap
+      DB_PASS: postgres
+      DB_USER: postgres
     restart: unless-stopped
     tty: true
     ports:
