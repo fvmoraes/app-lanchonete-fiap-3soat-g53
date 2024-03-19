@@ -1,4 +1,4 @@
-name: 3soat-g53 CI
+name: 3soat-g53-ci
 
 on:
   push:
