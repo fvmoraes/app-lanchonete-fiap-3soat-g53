@@ -23,7 +23,7 @@ jobs:
     - name: Build Docker image
       run: docker pull --platform linux/arm64 eclipse-temurin:17-jre-focal && docker build -f docker/Dockerfile -t local/applanchonetetok8s:latest .
     - name: Authenticate with Docker Hub
-      run: echo '${{ secrets.DOCKERHUB_TOKEN }}' | docker login -u '${{ secrets.DOCKERHUB_USERNAME }}'' --password-stdin
+      run: echo '${{ secrets.DOCKERHUB_TOKEN }}' | docker login -u '${{ secrets.DOCKERHUB_USERNAME }}' --password-stdin
     - name: Push Docker image to Docker Hub
       run: docker push local/applanchonetetok8s:latest
 
