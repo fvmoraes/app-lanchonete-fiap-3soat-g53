@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: ${CONNECTION_STRING:jdbc:postgresql://localhost:5432/fiap}
-    password: postgres
-    username: postgres
+    url: ${CONNECTION_STRING}
+    password: ${DB_PASS}
+    username: ${DB_USER}
     driver-class-name: org.postgresql.Driver
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
