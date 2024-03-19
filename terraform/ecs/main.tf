@@ -43,6 +43,14 @@ resource "aws_ecs_task_definition" "this" {
         {
         "name": "CONNECTION_STRING",
         "value": "${var.database_url}"
+        },
+        {
+          "name": "DB_USER",
+          "value": "${var.database_user}"
+        },
+        {
+          "name": "DB_PASS",
+          "value": "${var.database_password}"
         }
       ]
     }
