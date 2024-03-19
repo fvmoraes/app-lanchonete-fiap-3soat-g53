@@ -18,10 +18,10 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-    - name: Build JAR with Maven
-      run: mvn -B package --file pom.xml
+    # - name: Build JAR with Maven
+    #   run: mvn -B package --file pom.xml
     - name: Build Docker image
-      run: docker build --file docker/Dockerfile --platform linux/arm64 -t local/applanchonetetok8s:latest .
+      run: docker build -f docker/Dockerfile --platform linux/arm64 -t local/applanchonetetok8s:latest .
     - name: Authenticate with AWS ECR
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
