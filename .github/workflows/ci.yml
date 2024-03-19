@@ -22,11 +22,18 @@ jobs:
     #   run: mvn -B package --file pom.xml
     - name: Build Docker image
       run: docker build -f docker/Dockerfile -t local/applanchonetetok8s:latest .
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ variables.AWS_REGION }}
+        aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
     - name: Authenticate with AWS ECR
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        AWS_REGION: us-east-1
+        AWS_REGION: ${{ variables.AWS_REGION }}
       run: aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin 339712845518.dkr.ecr.us-east-1.amazonaws.com
     - name: Tag Docker image
       run: docker tag local/applanchonetetok8s:latest 339712845518.dkr.ecr.us-east-1.amazonaws.com/applanchonetetok8s:latest
