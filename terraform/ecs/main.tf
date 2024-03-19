@@ -42,7 +42,7 @@ resource "aws_ecs_task_definition" "this" {
       "environment": [
         {
         "name": "CONNECTION_STRING",
-        "value": "jdbc:postgresql://${aws_db_instance.rds-db-3soat-g53.endpoint}/fiap"
+        "value": "${var.database_url}"
         }
       ]
     }
@@ -158,21 +158,21 @@ resource "aws_db_subnet_group" "db-sgb" {
   }
 }
 
-resource "aws_db_instance" "rds-db-3soat-g53" {
-  identifier           = "rds-db-3soat-g53"
-  allocated_storage    = 10
-  storage_type         = "gp2"
-  engine               = "postgres"
-  engine_version       = "15.5"
-  instance_class       = "db.t3.micro"
-  db_subnet_group_name = aws_db_subnet_group.db-sgb.name
-  db_name              = var.database_name
-  username             = var.database_user
-  password             = var.database_password
-  tags = {
-    Name = "RDS-DB-3SOAT-G53"
-  }
-}
+# resource "aws_db_instance" "rds-db-3soat-g53" {
+#   identifier           = "rds-db-3soat-g53"
+#   allocated_storage    = 10
+#   storage_type         = "gp2"
+#   engine               = "postgres"
+#   engine_version       = "15.5"
+#   instance_class       = "db.t3.micro"
+#   db_subnet_group_name = aws_db_subnet_group.db-sgb.name
+#   db_name              = var.database_name
+#   username             = var.database_user
+#   password             = var.database_password
+#   tags = {
+#     Name = "RDS-DB-3SOAT-G53"
+#   }
+# }
 
 # TEST
 resource "aws_ecs_task_definition" "task-test-3soat-g53" {

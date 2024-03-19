@@ -51,16 +51,25 @@ variable "database_port" {
 }
 
 variable "database_user" {
-  default = "postgres"
+  default = "jnnwlymy"
 }
 
 variable "database_password" {
-  default = "postgres"
+  default = "dt0MGNj3kg7Ie5t6-C48oY6A43ewIcRI"
 }
 
 variable "database_name" {
-  default = "fiap"
+  default = "jnnwlymy"
 }
+
+variable "database_url" {
+  default = "jdbc:postgresql://drona.db.elephantsql.com:5432/jnnwlymy"
+}
+
+# variable "database_url" {
+#   default = "jdbc:postgresql://${aws_db_instance.rds-db-3soat-g53.endpoint}/fiap"
+# }
+
 
 # ECS TEST
 variable "desired_capacity_test" {

@@ -186,5 +186,5 @@ resource "aws_security_group" "alb_rds" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  tags = merge(local.common_tags, { Name : "ECS 3SOAT-G53 ALB-TEST-SG" })
+  tags = merge(local.common_tags, { Name : "ECS 3SOAT-G53 ALB-RDS-SG" })
 }
