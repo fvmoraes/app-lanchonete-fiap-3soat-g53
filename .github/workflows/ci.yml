@@ -20,6 +20,8 @@ jobs:
         cache: maven
     # - name: Build JAR with Maven
     #   run: mvn -B package --file pom.xml
+    - name: Authenticate with AWS ECR
+      run: echo ${{ secrets.AWS_REGION }}
     - name: Build Docker image
       run: docker pull --platform linux/arm64 eclipse-temurin:17-jre-focal && docker build -f docker/Dockerfile -t local/applanchonetetok8s:latest .
     - name: Authenticate with AWS ECR
