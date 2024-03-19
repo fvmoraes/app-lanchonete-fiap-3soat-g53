@@ -23,7 +23,7 @@ jobs:
     - name: Authenticate with AWS ECR
       env:
         AWS_REGION: ${{ secrets.AWS_REGION }}
-      run: echo $AWS_REGION
+      run: echo "$env:AWS_REGION"
     - name: Build Docker image
       run: docker pull --platform linux/arm64 eclipse-temurin:17-jre-focal && docker build -f docker/Dockerfile -t local/applanchonetetok8s:latest .
     - name: Authenticate with AWS ECR
