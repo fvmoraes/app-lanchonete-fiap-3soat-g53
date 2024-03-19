@@ -20,7 +20,7 @@ secretGenerator:
 configMapGenerator:
 - name: applanchonete-configmap
   literals:
-  - CONNECTION_STRING=jdbc:postgresql://postgres-service.3soatg53.svc.cluster.local:5432/fiap
+  - CONNECTION_STRING=jdbc:postgresql://rds-db-3soat-g53.c3kwemw84tyy.us-east-1.rds.amazonaws.com:5432/fiap
 
 generatorOptions:
   disableNameSuffixHash: false

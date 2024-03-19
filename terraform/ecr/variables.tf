@@ -13,5 +13,5 @@ variable "aws_region" {
 }
 
 variable "container_image" {
-  default = "my-app-container"
+  default = "applanchonetetok8s"
 }

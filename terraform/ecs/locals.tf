@@ -1,6 +1,6 @@
 locals {
 
-  subnet_ids = { for k, v in aws_subnet.this : v.tags.Name => v.id }
+  subnet_ids = { for k, v in aws_subnet.sbn_3soat_g53 : v.tags.Name => v.id }
 
   common_tags = {
     Project   = "ECS Fargate"

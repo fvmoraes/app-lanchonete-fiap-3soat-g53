@@ -23,7 +23,7 @@ variable "container_port" {
 }
 
 variable "image_url" {
-  default = "fvmoraes/applanchonetetok8s:latest"
+  default = "339712845518.dkr.ecr.us-east-1.amazonaws.com/applanchonetetok8s:latest"
 }
 
 variable "memory" {
@@ -51,24 +51,19 @@ variable "database_port" {
 }
 
 variable "database_user" {
-  default = "jnnwlymy"
+  default = "postgres"
 }
 
 variable "database_password" {
-  default = "dt0MGNj3kg7Ie5t6-C48oY6A43ewIcRI"
+  default = "postgres"
 }
 
 variable "database_name" {
-  default = "jnnwlymy"
+  default = "fiap"
 }
-
 variable "database_url" {
-  default = "jdbc:postgresql://drona.db.elephantsql.com:5432/jnnwlymy"
+  default = "jdbc:postgresql://"
 }
-
-# variable "database_url" {
-#   default = "jdbc:postgresql://${aws_db_instance.rds-db-3soat-g53.endpoint}/fiap"
-# }
 
 
 # ECS TEST
