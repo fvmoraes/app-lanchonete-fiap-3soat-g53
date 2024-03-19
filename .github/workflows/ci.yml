@@ -1,4 +1,4 @@
-name: Java CI with Maven
+name: 3soat-g53 CI
 
 on:
   push:
