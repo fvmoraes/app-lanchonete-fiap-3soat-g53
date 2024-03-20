@@ -1,4 +1,4 @@
-name: Java CI with Maven
+name: 3soat-g53-ci
 
 on:
   push:
@@ -7,17 +7,36 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
-
+  build-and-push-image:
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
+
     - name: Set up JDK 17
       uses: actions/setup-java@v3
       with:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-    - name: test with Maven
+        
+    - name: Build JAR with Maven
       run: mvn -B verify
+
+    - name: Build Docker image
+      run: docker pull --platform linux/arm64 eclipse-temurin:17-jre-focal && docker build -f docker/Dockerfile -t local/applanchonetetok8s:latest .
+   
+    - name: Set up AWS credentials
+      run: |
+        aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws configure set region us-east-1
+   
+    - name: Authenticate with AWS ECR
+      run: aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 339712845518.dkr.ecr.us-east-1.amazonaws.com
+   
+    - name: Tag Docker image
+      run: docker tag local/applanchonetetok8s:latest 339712845518.dkr.ecr.us-east-1.amazonaws.com/applanchonetetok8s:latest
+  
+    - name: Push Docker image to AWS ECR
+      run: docker push 339712845518.dkr.ecr.us-east-1.amazonaws.com/applanchonetetok8s:latest
