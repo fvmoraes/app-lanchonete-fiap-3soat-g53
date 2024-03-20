@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [ "main" ]
 
+env:
+  dockerhub_username: ${{ secrets.DOCKERHUB_USERNAME }}
+  dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
+
 jobs:
   build-and-push-image:
     runs-on: ubuntu-latest
@@ -22,8 +26,8 @@ jobs:
       run: mvn -B verify
     - name: Debug secrets
       run: |
-        echo "DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}"
-        echo "DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}"
+        echo ${dockerhub_username}
+        echo ${dockerhub_token}
     # - name: Build Docker image
     #   run: docker pull --platform linux/arm64 eclipse-temurin:17-jre-focal && docker build -f docker/Dockerfile -t local/applanchonetetok8s:latest .
     # - name: Authenticate with Docker Hub
